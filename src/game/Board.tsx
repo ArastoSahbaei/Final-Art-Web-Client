@@ -2,9 +2,24 @@ import { useState } from 'react'
 import { tilesData } from '../shared/data/tilesData'
 import styled from 'styled-components'
 import './Board.css'
+import { initialHandDeck } from '../shared/data/initialHandDeck'
 
 export const Board = () => {
 	const [tiles, setTiles] = useState(tilesData)
+	const [deckOfCards, setDeckOfCards] = useState(initialHandDeck)
+
+	const displayPlayerDeck = () => {
+		return deckOfCards.map((item: any, index: number) =>
+			<div key={index}>
+				<h1>{item.name}</h1>
+				<span>N{item.card.N} </span>
+				<span>E{item.card.E} </span>
+				<span>S{item.card.S} </span>
+				<span>W{item.card.W} </span>
+				<img src={item.image} style={{width: 140}}/>
+			</div>
+		)
+	}
 
 	const displayTiles = () => {
 		return tiles.map((item: any) =>
@@ -40,6 +55,7 @@ export const Board = () => {
 	return (
 		<div id='chessboard'>
 			{displayTiles()}
+			{displayPlayerDeck()}
 		</div>
 	)
 }
