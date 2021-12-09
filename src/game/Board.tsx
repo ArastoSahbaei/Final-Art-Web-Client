@@ -18,17 +18,24 @@ export const Board = () => {
 		)
 	}
 
+	const getRow = (tile: number) => { return tile > 0 && tile < 5 ? 1 : tile < 9 ? 2 : tile < 13 ? 3 : tile < 17 ? 4 : null }
+	const getColumn = (tile: number) => { return [1, 5, 9, 13].includes(tile) ? 1 : [2, 6, 10, 14].includes(tile) ? 2 : [3, 7, 11, 15].includes(tile) ? 3 : 4 }
 	const getAdjacentTiles = (tile: any) => {
-		const row = tile < 5 ? 1 : tile < 9 ? 2 : tile < 13 ? 3 : 4
-		const column = [1, 5, 9, 13].includes(tile) ? 1 : [2, 6, 10, 14].includes(tile) ? 2 : [3, 7, 11, 15].includes(tile) ? 3 : 4
-		const adjacentRows = { E: tile - 1, W: tile + 1 }
+		const row = getRow(tile)
+		const column = getColumn(tile)
 
-		console.log(tile)
-		console.log('IS ON ROW: ' + row)
-		console.log('IS ON COLUMN: ' + column)
-		console.log(`ADJACENT ROWS: E: ${adjacentRows.E} W: ${adjacentRows.W}`)
-		/* TODO: IF I CLICK ON A TILE I WANT TO RETRIEVE THE VALUES OF THE TILES FROM N-E-S-W */
+		const adjacent = {
+			E: getRow(tile - 1) === row ? tile - 1 : null,
+			W: getRow(tile + 1) === row ? tile + 1 : null,
+			N: (tile - 4 > 1) ? tile - 4 : null,
+			S: (tile + 4 < 16) ? tile + 4 : null
+		}
+
+		console.log('VALUE: ' + tile)
+		console.log('ROW: ' + row, 'COLUMN: ' + column)
+		console.log(`ADJACENT VALUES: E:${adjacent.E} W:${adjacent.W} N:${adjacent.N} S:${adjacent.S}`)
 	}
+
 
 	return (
 		<div id='chessboard'>
