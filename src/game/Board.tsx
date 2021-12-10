@@ -1,30 +1,44 @@
 import { useState } from 'react'
 import { tilesData } from '../shared/data/tilesData'
-import styled from 'styled-components'
-import './Board.css'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
+import './Board.css'
+interface cardValues {
+	N: number,
+	E: number,
+	S: number,
+	W: number
+}
+interface card {
+	name: string,
+	card: cardValues,
+	image: string
+}
+interface tile {
+	tileNumber: number,
+	card: cardValues
+}
 
 export const Board = () => {
-	const [tiles, setTiles] = useState(tilesData)
-	const [deckOfCards, setDeckOfCards] = useState(initialHandDeck)
+	const [tiles, setTiles] = useState<Array<tile>>(tilesData)
+	const [deckOfCards, setDeckOfCards] = useState<Array<card>>(initialHandDeck)
 
 	const displayPlayerDeck = () => {
-		return deckOfCards.map((item: any, index: number) =>
+		return deckOfCards.map((item: card, index: number) =>
 			<div key={index}>
 				<h1>{item.name}</h1>
 				<span>N{item.card.N} </span>
 				<span>E{item.card.E} </span>
 				<span>S{item.card.S} </span>
 				<span>W{item.card.W} </span>
-				<img src={item.image} style={{width: 140}}/>
+				<img src={item.image} style={{ width: 140 }} />
 			</div>
 		)
 	}
 
 	const displayTiles = () => {
-		return tiles.map((item: any) =>
-			<div className='tile' key={item.tile} onClick={() => getAdjacentTiles(item.tile)}>
-				<h1>{item.tile}</h1>
+		return tiles.map((item: tile) =>
+			<div className='tile' key={item.tileNumber} onClick={() => getAdjacentTiles(item.tileNumber)}>
+				<h1>{item.tileNumber}</h1>
 				<p>N:{item.card.N}</p>
 				<p>E:{item.card.E}</p>
 				<p>W:{item.card.W}</p>
@@ -59,5 +73,3 @@ export const Board = () => {
 		</div>
 	)
 }
-
-const Wrapper = styled.div``
