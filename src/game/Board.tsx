@@ -139,8 +139,6 @@ export const Board = () => {
 			onMouseUp={e => dropCard(e)}>
 			{displayTiles()}
 			{displayPlayerDeck()}
-			<button onClick={() => console.log(tiles)}>tiles</button>
-			<button onClick={() => console.log(cardBeingPlayed)}>cardbeingplayed</button>
 		</div>
 	)
 }
