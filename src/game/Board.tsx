@@ -1,43 +1,52 @@
-import React, { useState } from 'react'
+import { useState, useRef } from 'react'
 import { tilesData } from '../shared/data/tilesData'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
-import './Board.css'
 import styled from 'styled-components'
+import './Board.css'
+import { GRID_SIZE } from '../shared/constants/GRID_SIZE'
 interface cardValues {
 	N: number,
 	E: number,
 	S: number,
 	W: number
 }
+
+const defaultValueCard = {
+	name: 'Bahamut',
+	cardValues: { N: 0, E: 0, S: 0, W: 0 },
+	image: 'https://img-9gag-fun.9cache.com/photo/aO7o502_460s.jpg'
+}
 interface card {
 	name: string,
-	card: cardValues,
+	cardValues: cardValues,
 	image: string
 }
 interface tile {
 	tileNumber: number,
-	card: cardValues
+	card: card
 }
 
 export const Board = () => {
+	const boardRef = useRef<HTMLDivElement | null>(null)
 	const [tiles, setTiles] = useState<Array<tile>>(tilesData)
 	const [deckOfCards, setDeckOfCards] = useState<Array<card>>(initialHandDeck)
-
+	const [cardBeingPlayed, setCardBeingPlayed] = useState<card>(defaultValueCard)
 	let activeCard: HTMLElement | null = null
 
+
 	const grabCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+		const playBoard = boardRef.current
+
 		const element = e.target as HTMLElement
 		console.log(element.classList)
-		if (element.classList.contains('ROFLMAO')) {
+		if (element.classList.contains('ROFLMAO') && playBoard) {
 			element.style.position = 'absolute'
 			const x = e.clientX - 50
 			const y = e.clientY - 50
 			element.style.left = `${x}px`
 			element.style.top = `${y}px`
 		}
-
 		activeCard = element
-
 	}
 
 	const moveCard = (e: React.MouseEvent) => {
@@ -50,35 +59,57 @@ export const Board = () => {
 		}
 	}
 
+	const determineTileIndex = (column: number, row: number) => {
+		let value = [1, 2, 3, 4];
+		(row === 1) ? null :
+			(row === 2) ? value = [5, 6, 7, 8] :
+				(row === 3) ? value = [9, 10, 11, 12] :
+					(row === 4) ? value = [13, 14, 15, 16] : null
+		return value[column - 1]
+	}
+
+	const updateGameTile = (index: number, card: card) => {
+		const tilesCopy = [...tiles];
+		const oldTileIndex = tilesCopy.findIndex(tile => tile.tileNumber === index);
+		tilesCopy[oldTileIndex] = { tileNumber: index, card };
+		setTiles(tilesCopy)
+
+	}
+
 	const dropCard = (e: React.MouseEvent) => {
-		if (activeCard) {
+		const element = e.target as HTMLElement
+		const playBoard = boardRef.current
+		if (activeCard && playBoard) {
 			activeCard = null
-			console.log(e)
+			const x = Math.ceil((Math.floor((e.clientX - playBoard.offsetLeft) / 100) + 1) / 2)
+			const y = Math.ceil((Math.floor((e.clientY - playBoard.offsetTop) / 100) + 1) / 2)
+			const tileIndex = determineTileIndex(x, y)
+			updateGameTile(tileIndex, cardBeingPlayed)
 		}
 	}
 
 	const displayPlayerDeck = () => {
 		return deckOfCards.map((item: card, index: number) =>
-			<div key={index}>
-				<h1>{item.name}</h1>
-				<span>N{item.card.N} </span>
-				<span>E{item.card.E} </span>
-				<span>S{item.card.S} </span>
-				<span>W{item.card.W} </span>
-				<Div image={item.image} onMouseDown={e => grabCard(e)} className='ROFLMAO' />
-			</div>
+			<Div image={item.image} key={index} onMouseDown={e => grabCard(e)}
+				onClick={() => setCardBeingPlayed(item)} className='ROFLMAO'>
+				{/* <h1>{item.name}</h1> */}
+				<span>N{item.cardValues.N} </span>
+				<span>E{item.cardValues.E} </span>
+				<span>S{item.cardValues.S} </span>
+				<span>W{item.cardValues.W} </span>
+			</Div>
 		)
 	}
 
 	const displayTiles = () => {
 		return tiles.map((item: tile) =>
-			<div className='tile' key={item.tileNumber} onClick={() => getAdjacentTiles(item.tileNumber)}>
+			<TileDiv image={item.card.image} className='tile' key={item.tileNumber} onClick={() => getAdjacentTiles(item.tileNumber)}>
 				<h1>{item.tileNumber}</h1>
-				<p>N:{item.card.N}</p>
-				<p>E:{item.card.E}</p>
-				<p>W:{item.card.W}</p>
-				<p>S:{item.card.S}</p>
-			</div>
+				<p>N:{item.card.cardValues.N}</p>
+				<p>E:{item.card.cardValues.E}</p>
+				<p>W:{item.card.cardValues.W}</p>
+				<p>S:{item.card.cardValues.S}</p>
+			</TileDiv>
 		)
 	}
 
@@ -103,10 +134,13 @@ export const Board = () => {
 
 	return (
 		<div id='chessboard'
+			ref={boardRef}
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCard(e)}>
 			{displayTiles()}
 			{displayPlayerDeck()}
+			<button onClick={() => console.log(tiles)}>tiles</button>
+			<button onClick={() => console.log(cardBeingPlayed)}>cardbeingplayed</button>
 		</div>
 	)
 }
@@ -117,15 +151,23 @@ interface image {
 
 const Div = styled.div<image>`
 	background: ${props => `url(${props.image})`};
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 150px;
+	background-size: 80px;
 	&:hover {
 		cursor: grab;
 	}
 	&:active {
 		cursor: grabbing;
 	}
+`
+
+const TileDiv = styled.div<image>`
+	background: ${props => `url(${props.image})`};
+	width: 150px;
+	height: 150px;
+	background-repeat: no-repeat;
+	background-position: center;
 `
