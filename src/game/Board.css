@@ -15,3 +15,7 @@
 h1 {
    text-align: center;
 }
+
+.playerCard {
+    background-color: red;
+}

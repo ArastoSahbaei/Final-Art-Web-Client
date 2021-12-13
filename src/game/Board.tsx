@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { tilesData } from '../shared/data/tilesData'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
 import './Board.css'
+import styled from 'styled-components'
 interface cardValues {
 	N: number,
 	E: number,
@@ -22,6 +23,40 @@ export const Board = () => {
 	const [tiles, setTiles] = useState<Array<tile>>(tilesData)
 	const [deckOfCards, setDeckOfCards] = useState<Array<card>>(initialHandDeck)
 
+	let activeCard: HTMLElement | null = null
+
+	const grabCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+		const element = e.target as HTMLElement
+		console.log(element.classList)
+		if (element.classList.contains('ROFLMAO')) {
+			element.style.position = 'absolute'
+			const x = e.clientX - 50
+			const y = e.clientY - 50
+			element.style.left = `${x}px`
+			element.style.top = `${y}px`
+		}
+
+		activeCard = element
+
+	}
+
+	const moveCard = (e: React.MouseEvent) => {
+		if (activeCard) {
+			activeCard.style.position = 'absolute'
+			const x = e.clientX - 50
+			const y = e.clientY - 50
+			activeCard.style.left = `${x}px`
+			activeCard.style.top = `${y}px`
+		}
+	}
+
+	const dropCard = (e: React.MouseEvent) => {
+		if (activeCard) {
+			activeCard = null
+			console.log(e)
+		}
+	}
+
 	const displayPlayerDeck = () => {
 		return deckOfCards.map((item: card, index: number) =>
 			<div key={index}>
@@ -30,7 +65,7 @@ export const Board = () => {
 				<span>E{item.card.E} </span>
 				<span>S{item.card.S} </span>
 				<span>W{item.card.W} </span>
-				<img src={item.image} style={{ width: 140 }} />
+				<Div image={item.image} onMouseDown={e => grabCard(e)} className='ROFLMAO' />
 			</div>
 		)
 	}
@@ -49,7 +84,7 @@ export const Board = () => {
 
 	const getRow = (tile: number) => { return tile > 0 && tile < 5 ? 1 : tile < 9 ? 2 : tile < 13 ? 3 : tile < 17 ? 4 : null }
 	const getColumn = (tile: number) => { return [1, 5, 9, 13].includes(tile) ? 1 : [2, 6, 10, 14].includes(tile) ? 2 : [3, 7, 11, 15].includes(tile) ? 3 : 4 }
-	const getAdjacentTiles = (tile: any) => {
+	const getAdjacentTiles = (tile: number) => {
 		const row = getRow(tile)
 		const column = getColumn(tile)
 
@@ -67,9 +102,30 @@ export const Board = () => {
 
 
 	return (
-		<div id='chessboard'>
+		<div id='chessboard'
+			onMouseMove={e => moveCard(e)}
+			onMouseUp={e => dropCard(e)}>
 			{displayTiles()}
 			{displayPlayerDeck()}
 		</div>
 	)
 }
+
+interface image {
+	image: string
+}
+
+const Div = styled.div<image>`
+	background: ${props => `url(${props.image})`};
+	width: 100px;
+	height: 100px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 150px;
+	&:hover {
+		cursor: grab;
+	}
+	&:active {
+		cursor: grabbing;
+	}
+`

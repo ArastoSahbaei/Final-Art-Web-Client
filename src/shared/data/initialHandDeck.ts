@@ -1,6 +1,6 @@
 import Bahamut from '../images/bahamut.jpg'
 import Valefor from '../images/valefor.png'
-import Ifrit from '../images/ifrit.jpg'
+import Ifrit from '../images/ifrit.png'
 import Shiva from '../images/shiva.png'
 import Ixion from '../images/ixion.jpg'
 
