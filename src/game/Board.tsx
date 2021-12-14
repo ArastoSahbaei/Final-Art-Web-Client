@@ -58,6 +58,29 @@ export const Board = () => {
 		}
 	}
 
+
+	const removeUsedCardFromDeck = () => {
+		const newArray = deckOfCards.filter((item) => item.name != cardBeingPlayed.name)
+		setDeckOfCards(newArray)
+		setCardBeingPlayed(defaultValueCard)
+	}
+
+	const verifyDroppedCardMovement = () => {
+		const board: any = boardRef.current?.getBoundingClientRect()
+		const card: any = activeCard?.getBoundingClientRect()
+		const isOutOfBoundary: boolean = card.bottom > board.bottom || card.right > board.right
+		console.log(board)
+		console.log(card)
+		if (isOutOfBoundary) {
+			activeCard && (activeCard.style.position = '')
+			activeCard = null
+			return false
+		} else {
+			removeUsedCardFromDeck()
+			return true
+		}
+	}
+
 	const determineTileIndex = (column: number, row: number) => {
 		let value = [1, 2, 3, 4];
 		(row === 1) ? null :
@@ -74,31 +97,14 @@ export const Board = () => {
 		setTiles(tilesCopy)
 	}
 
-	const removeUsedCardFromDeck = () => {
-		const newArray = deckOfCards.filter((item) => item.name != cardBeingPlayed.name)
-		setDeckOfCards(newArray)
-		setCardBeingPlayed(defaultValueCard)
-	}
-
-	const cardDroppedInsideBoard = (xCoordinates: number, yCoordinates: number) => {
-		//TODO: IF PLAYED PROPERLY (DROPPED INSIDE BOARD) RETURN TRUE
-		// ELSE RETURN 
-		return !xCoordinates
-	}
-
 	const dropCard = (e: React.MouseEvent) => {
-		const element = e.target as HTMLElement
 		const playBoard = boardRef.current
 		if (activeCard && playBoard) {
-			activeCard = null
 			const x = Math.ceil((Math.floor((e.clientX - playBoard.offsetLeft) / 100) + 1) / 2)
 			const y = Math.ceil((Math.floor((e.clientY - playBoard.offsetTop) / 100) + 1) / 2)
 			const tileIndex = determineTileIndex(x, y)
-			if (cardDroppedInsideBoard(x, y)) {
+			if (verifyDroppedCardMovement()) {
 				updateGameTile(tileIndex, cardBeingPlayed)
-				removeUsedCardFromDeck()
-			} else {
-				/* returnToDeckPosition() */
 			}
 		}
 	}
