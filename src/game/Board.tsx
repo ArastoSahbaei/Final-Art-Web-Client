@@ -48,6 +48,8 @@ export const Board = () => {
 		activeCard = element
 	}
 
+	const resetActiveCardPosition = () => { activeCard && (activeCard.style.position = '') }
+
 	const moveCard = (e: React.MouseEvent) => {
 		if (activeCard) {
 			activeCard.style.position = 'absolute'
@@ -57,7 +59,6 @@ export const Board = () => {
 			activeCard.style.top = `${y}px`
 		}
 	}
-
 
 	const removeUsedCardFromDeck = () => {
 		const newArray = deckOfCards.filter((item) => item.name != cardBeingPlayed.name)
@@ -95,6 +96,7 @@ export const Board = () => {
 		const oldTileIndex = tilesCopy.findIndex(tile => tile.tileNumber === index)
 		tilesCopy[oldTileIndex] = { tileNumber: index, card }
 		setTiles(tilesCopy)
+		resetActiveCardPosition()
 	}
 
 	const dropCard = (e: React.MouseEvent) => {
