@@ -2,7 +2,7 @@ import Bahamut from '../images/bahamut.jpg'
 import Valefor from '../images/valefor.png'
 import Ifrit from '../images/ifrit.png'
 import Shiva from '../images/shiva.png'
-import Ixion from '../images/ixion.jpg'
+import Ixion from '../images/Ixion.png'
 
 export const initialHandDeck = [
 	{ name: 'Bahamut', cardValues: { N: 5, E: 5, S: 5, W: 5 }, image: Bahamut },

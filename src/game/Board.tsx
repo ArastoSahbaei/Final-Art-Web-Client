@@ -109,10 +109,10 @@ export const Board = () => {
 		return tiles.map((item: tile) =>
 			<TileDiv image={item.card.image} className='tile' key={item.tileNumber} onClick={() => getAdjacentTiles(item.tileNumber)}>
 				<h1>{item.tileNumber}</h1>
-				<p>N:{item.card.cardValues.N}</p>
-				<p>E:{item.card.cardValues.E}</p>
-				<p>W:{item.card.cardValues.W}</p>
-				<p>S:{item.card.cardValues.S}</p>
+				<Paragraph>N:{item.card.cardValues.N}</Paragraph>
+				<Paragraph>E:{item.card.cardValues.E}</Paragraph>
+				<Paragraph>W:{item.card.cardValues.W}</Paragraph>
+				<Paragraph>S:{item.card.cardValues.S}</Paragraph>
 			</TileDiv>
 		)
 	}
@@ -173,4 +173,8 @@ const TileDiv = styled.div<image>`
 	background: ${props => `url(${props.image})`};
 	background-repeat: no-repeat;
 	background-position: center;
+`
+
+const Paragraph = styled.p`
+	color: #000000;
 `
