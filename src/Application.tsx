@@ -1,8 +1,10 @@
 import { Game } from './game/Game'
+import { GlobalStyle } from './shared/style/GlobalStyle'
 
 export const Application = () => {
 	return (
 		<div>
+			<GlobalStyle />
 			<Game />
 			{/* 			1. create board
 			2. make it playable

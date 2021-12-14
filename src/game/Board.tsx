@@ -68,16 +68,16 @@ export const Board = () => {
 	}
 
 	const updateGameTile = (index: number, card: card) => {
-		const tilesCopy = [...tiles];
-		const oldTileIndex = tilesCopy.findIndex(tile => tile.tileNumber === index);
-		tilesCopy[oldTileIndex] = { tileNumber: index, card };
+		const tilesCopy = [...tiles]
+		const oldTileIndex = tilesCopy.findIndex(tile => tile.tileNumber === index)
+		tilesCopy[oldTileIndex] = { tileNumber: index, card }
 		setTiles(tilesCopy)
-
 	}
 
 	const removeUsedCardFromDeck = () => {
 		const newArray = deckOfCards.filter((item) => item.name != cardBeingPlayed.name)
 		setDeckOfCards(newArray)
+		setCardBeingPlayed(defaultValueCard)
 	}
 
 	const dropCard = (e: React.MouseEvent) => {
@@ -97,7 +97,6 @@ export const Board = () => {
 		return deckOfCards.map((item: card, index: number) =>
 			<Div onMouseOver={() => setCardBeingPlayed(item)} image={item.image} key={index} onMouseDown={e => grabCard(e)}
 				className='ROFLMAO'>
-				{/* <h1>{item.name}</h1> */}
 				<span>N{item.cardValues.N} </span>
 				<span>E{item.cardValues.E} </span>
 				<span>S{item.cardValues.S} </span>
