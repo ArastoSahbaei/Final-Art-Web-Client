@@ -113,8 +113,11 @@ export const Board = () => {
 
 	const displayPlayerDeck = () => {
 		return deckOfCards.map((item: card, index: number) =>
-			<Div onMouseOver={() => setCardBeingPlayed(item)} image={item.image} key={index} onMouseDown={e => grabCard(e)}
-				className='ROFLMAO'>
+			<Div className='ROFLMAO'
+				image={item.image}
+				key={index}
+				onMouseOver={() => setCardBeingPlayed(item)}
+				onMouseDown={e => grabCard(e)}>
 				<span>N{item.cardValues.N} </span>
 				<span>E{item.cardValues.E} </span>
 				<span>S{item.cardValues.S} </span>
