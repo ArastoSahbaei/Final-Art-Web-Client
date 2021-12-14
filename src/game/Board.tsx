@@ -40,8 +40,8 @@ export const Board = () => {
 		console.log(element.classList)
 		if (element.classList.contains('ROFLMAO') && playBoard) {
 			element.style.position = 'absolute'
-			const x = e.clientX - 50
-			const y = e.clientY - 50
+			const x = e.clientX - 80
+			const y = e.clientY - 80
 			element.style.left = `${x}px`
 			element.style.top = `${y}px`
 		}
@@ -51,8 +51,8 @@ export const Board = () => {
 	const moveCard = (e: React.MouseEvent) => {
 		if (activeCard) {
 			activeCard.style.position = 'absolute'
-			const x = e.clientX - 50
-			const y = e.clientY - 50
+			const x = e.clientX - 80
+			const y = e.clientY - 80
 			activeCard.style.left = `${x}px`
 			activeCard.style.top = `${y}px`
 		}
@@ -80,6 +80,12 @@ export const Board = () => {
 		setCardBeingPlayed(defaultValueCard)
 	}
 
+	const cardDroppedInsideBoard = (xCoordinates: number, yCoordinates: number) => {
+		//TODO: IF PLAYED PROPERLY (DROPPED INSIDE BOARD) RETURN TRUE
+		// ELSE RETURN 
+		return !xCoordinates
+	}
+
 	const dropCard = (e: React.MouseEvent) => {
 		const element = e.target as HTMLElement
 		const playBoard = boardRef.current
@@ -88,8 +94,12 @@ export const Board = () => {
 			const x = Math.ceil((Math.floor((e.clientX - playBoard.offsetLeft) / 100) + 1) / 2)
 			const y = Math.ceil((Math.floor((e.clientY - playBoard.offsetTop) / 100) + 1) / 2)
 			const tileIndex = determineTileIndex(x, y)
-			updateGameTile(tileIndex, cardBeingPlayed)
-			removeUsedCardFromDeck()
+			if (cardDroppedInsideBoard(x, y)) {
+				updateGameTile(tileIndex, cardBeingPlayed)
+				removeUsedCardFromDeck()
+			} else {
+				/* returnToDeckPosition() */
+			}
 		}
 	}
 
