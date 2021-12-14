@@ -36,7 +36,6 @@ export const Board = () => {
 
 	const grabCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		const playBoard = boardRef.current
-
 		const element = e.target as HTMLElement
 		console.log(element.classList)
 		if (element.classList.contains('ROFLMAO') && playBoard) {
@@ -76,6 +75,11 @@ export const Board = () => {
 
 	}
 
+	const removeUsedCardFromDeck = () => {
+		const newArray = deckOfCards.filter((item) => item.name != cardBeingPlayed.name)
+		setDeckOfCards(newArray)
+	}
+
 	const dropCard = (e: React.MouseEvent) => {
 		const element = e.target as HTMLElement
 		const playBoard = boardRef.current
@@ -85,6 +89,7 @@ export const Board = () => {
 			const y = Math.ceil((Math.floor((e.clientY - playBoard.offsetTop) / 100) + 1) / 2)
 			const tileIndex = determineTileIndex(x, y)
 			updateGameTile(tileIndex, cardBeingPlayed)
+			removeUsedCardFromDeck()
 		}
 	}
 
@@ -133,13 +138,16 @@ export const Board = () => {
 
 
 	return (
-		<div id='chessboard'
-			ref={boardRef}
-			onMouseMove={e => moveCard(e)}
-			onMouseUp={e => dropCard(e)}>
-			{displayTiles()}
-			{displayPlayerDeck()}
-		</div>
+		<>
+			<div id='chessboard'
+				ref={boardRef}
+				onMouseMove={e => moveCard(e)}
+				onMouseUp={e => dropCard(e)}>
+				{displayTiles()}
+				{displayPlayerDeck()}
+				<h1>currently hovering: {cardBeingPlayed.name}</h1>
+			</div>
+		</>
 	)
 }
 
@@ -164,8 +172,6 @@ const Div = styled.div<image>`
 
 const TileDiv = styled.div<image>`
 	background: ${props => `url(${props.image})`};
-	width: 150px;
-	height: 150px;
 	background-repeat: no-repeat;
 	background-position: center;
 `
