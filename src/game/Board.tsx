@@ -2,8 +2,6 @@ import { useState, useRef } from 'react'
 import { tilesData } from '../shared/data/tilesData'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
 import styled from 'styled-components'
-import './Board.css'
-import { GRID_SIZE } from '../shared/constants/GRID_SIZE'
 interface cardValues {
 	N: number,
 	E: number,
@@ -130,7 +128,7 @@ export const Board = () => {
 	const displayTiles = () => {
 		return tiles.map((item: tile) =>
 			<TileDiv image={item.card.image} className='tile' key={item.tileNumber} onClick={() => getAdjacentTiles(item.tileNumber)}>
-				<h1>{item.tileNumber}</h1>
+				<h1 style={{ textAlign: 'center' }}>{item.tileNumber}</h1>
 				<Paragraph>N:{item.card.cardValues.N}</Paragraph>
 				<Paragraph>E:{item.card.cardValues.E}</Paragraph>
 				<Paragraph>W:{item.card.cardValues.W}</Paragraph>
@@ -160,14 +158,14 @@ export const Board = () => {
 
 	return (
 		<>
-			<div id='chessboard'
+			<BoardWrapper
 				ref={boardRef}
 				onMouseMove={e => moveCard(e)}
 				onMouseUp={e => dropCard(e)}>
 				{displayTiles()}
 				{displayPlayerDeck()}
 				<h1>currently hovering: {cardBeingPlayed.name}</h1>
-			</div>
+			</BoardWrapper>
 		</>
 	)
 }
@@ -191,10 +189,23 @@ const Div = styled.div<image>`
 	}
 `
 
+const BoardWrapper = styled.div`
+	display: grid;
+   grid-template-columns: repeat(4, 200px);
+   grid-template-rows: repeat(4, 200px);
+   width: 800px;
+   height: 800px;
+`
+
 const TileDiv = styled.div<image>`
 	background: ${props => `url(${props.image})`};
 	background-repeat: no-repeat;
 	background-position: center;
+	width: 200px;
+   height: 200px;
+   background-color: white;   
+   color: white;
+   border-style: ridge;
 `
 
 const Paragraph = styled.p`
