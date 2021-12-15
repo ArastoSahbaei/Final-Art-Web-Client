@@ -1,28 +1,8 @@
 import { useState, useRef } from 'react'
-import { tilesData } from '../shared/data/tilesData'
+import { defaultValueCard, tilesData } from '../shared/data/tilesData'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
+import { tile, card } from '../shared/interfaces/gameInterface'
 import styled from 'styled-components'
-interface cardValues {
-	N: number,
-	E: number,
-	S: number,
-	W: number
-}
-
-const defaultValueCard = {
-	name: 'Bahamut',
-	cardValues: { N: 0, E: 0, S: 0, W: 0 },
-	image: 'https://img-9gag-fun.9cache.com/photo/aO7o502_460s.jpg'
-}
-interface card {
-	name: string,
-	cardValues: cardValues,
-	image: string
-}
-interface tile {
-	tileNumber: number,
-	card: card
-}
 
 export const Board = () => {
 	const boardRef = useRef<HTMLDivElement | null>(null)
@@ -30,7 +10,6 @@ export const Board = () => {
 	const [deckOfCards, setDeckOfCards] = useState<Array<card>>(initialHandDeck)
 	const [cardBeingPlayed, setCardBeingPlayed] = useState<card>(defaultValueCard)
 	let activeCard: HTMLElement | null = null
-
 
 	const grabCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		const playBoard = boardRef.current
@@ -116,10 +95,10 @@ export const Board = () => {
 				key={index}
 				onMouseOver={() => setCardBeingPlayed(item)}
 				onMouseDown={e => grabCard(e)}>
-				<span>N{item.cardValues.N} </span>
-				<span>E{item.cardValues.E} </span>
-				<span>S{item.cardValues.S} </span>
-				<span>W{item.cardValues.W} </span>
+				<span> N{item.cardValues.N} </span>
+				<span> E{item.cardValues.E} </span>
+				<span> S{item.cardValues.S} </span>
+				<span> W{item.cardValues.W} </span>
 			</Div>
 		)
 	}
@@ -153,7 +132,6 @@ export const Board = () => {
 		console.log('ROW: ' + row, 'COLUMN: ' + column)
 		console.log(`ADJACENT VALUES: E:${adjacent.E} W:${adjacent.W} N:${adjacent.N} S:${adjacent.S}`)
 	}
-
 
 	return (
 		<>
