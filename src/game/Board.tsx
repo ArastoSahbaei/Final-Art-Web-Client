@@ -66,13 +66,14 @@ export const Board = () => {
 		setCardBeingPlayed(defaultValueCard)
 	}
 
-	const verifyDroppedCardMovement = () => {
+	const verifyDroppedCardMovement = (tileIndex: number) => {
+		const isTileOccupied = tiles[tileIndex - 1].card.name
 		const board: any = boardRef.current?.getBoundingClientRect()
 		const card: any = activeCard?.getBoundingClientRect()
 		const isOutOfBoundary: boolean = card.bottom > board.bottom || card.right > board.right
-		console.log(board)
-		console.log(card)
-		if (isOutOfBoundary) {
+
+		if (isOutOfBoundary || isTileOccupied) {
+			console.log(isOutOfBoundary || isTileOccupied)
 			activeCard && (activeCard.style.position = '')
 			activeCard = null
 			return false
@@ -105,7 +106,7 @@ export const Board = () => {
 			const x = Math.ceil((Math.floor((e.clientX - playBoard.offsetLeft) / 100) + 1) / 2)
 			const y = Math.ceil((Math.floor((e.clientY - playBoard.offsetTop) / 100) + 1) / 2)
 			const tileIndex = determineTileIndex(x, y)
-			if (verifyDroppedCardMovement()) {
+			if (verifyDroppedCardMovement(tileIndex)) {
 				updateGameTile(tileIndex, cardBeingPlayed)
 			}
 		}
