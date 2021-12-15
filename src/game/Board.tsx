@@ -65,13 +65,12 @@ export const Board = () => {
 	}
 
 	const verifyDroppedCardMovement = (tileIndex: number) => {
-		const isTileOccupied = tiles[tileIndex - 1].card.name
+		const isTileOccupied = tiles[tileIndex - 1]?.card?.name
 		const board: any = boardRef.current?.getBoundingClientRect()
 		const card: any = activeCard?.getBoundingClientRect()
 		const isOutOfBoundary: boolean = card.bottom > board.bottom || card.right > board.right
 
 		if (isOutOfBoundary || isTileOccupied) {
-			console.log(isOutOfBoundary || isTileOccupied)
 			activeCard && (activeCard.style.position = '')
 			activeCard = null
 			return false
@@ -164,7 +163,6 @@ export const Board = () => {
 				onMouseUp={e => dropCard(e)}>
 				{displayTiles()}
 				{displayPlayerDeck()}
-				<h1>currently hovering: {cardBeingPlayed.name}</h1>
 			</BoardWrapper>
 		</>
 	)
