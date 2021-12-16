@@ -1,2 +1,0 @@
-#chessboard{display:grid;grid-template-columns:repeat(4,200px);grid-template-rows:repeat(4,200px);width:800px;height:800px}#chessboard .tile{width:200px;height:200px;background-color:#fff;color:#fff;border-style:ridge}h1{text-align:center}.playerCard{background-color:#fff}
-/*# sourceMappingURL=main.a6964040.chunk.css.map */

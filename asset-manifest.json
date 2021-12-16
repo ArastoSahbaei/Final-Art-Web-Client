@@ -1,26 +1,23 @@
 {
   "files": {
-    "main.css": "/Final-Art-Web-Client/static/css/main.a6964040.chunk.css",
-    "main.js": "/Final-Art-Web-Client/static/js/main.713e2bb3.chunk.js",
-    "main.js.map": "/Final-Art-Web-Client/static/js/main.713e2bb3.chunk.js.map",
-    "runtime-main.js": "/Final-Art-Web-Client/static/js/runtime-main.49f0fb9a.js",
-    "runtime-main.js.map": "/Final-Art-Web-Client/static/js/runtime-main.49f0fb9a.js.map",
-    "static/js/2.b953d817.chunk.js": "/Final-Art-Web-Client/static/js/2.b953d817.chunk.js",
-    "static/js/2.b953d817.chunk.js.map": "/Final-Art-Web-Client/static/js/2.b953d817.chunk.js.map",
-    "static/js/3.1aff28c5.chunk.js": "/Final-Art-Web-Client/static/js/3.1aff28c5.chunk.js",
-    "static/js/3.1aff28c5.chunk.js.map": "/Final-Art-Web-Client/static/js/3.1aff28c5.chunk.js.map",
+    "main.js": "/Final-Art-Web-Client/static/js/main.3f8f3866.chunk.js",
+    "main.js.map": "/Final-Art-Web-Client/static/js/main.3f8f3866.chunk.js.map",
+    "runtime-main.js": "/Final-Art-Web-Client/static/js/runtime-main.679335e2.js",
+    "runtime-main.js.map": "/Final-Art-Web-Client/static/js/runtime-main.679335e2.js.map",
+    "static/js/2.b50b1ea3.chunk.js": "/Final-Art-Web-Client/static/js/2.b50b1ea3.chunk.js",
+    "static/js/2.b50b1ea3.chunk.js.map": "/Final-Art-Web-Client/static/js/2.b50b1ea3.chunk.js.map",
+    "static/js/3.98100711.chunk.js": "/Final-Art-Web-Client/static/js/3.98100711.chunk.js",
+    "static/js/3.98100711.chunk.js.map": "/Final-Art-Web-Client/static/js/3.98100711.chunk.js.map",
     "index.html": "/Final-Art-Web-Client/index.html",
-    "static/css/main.a6964040.chunk.css.map": "/Final-Art-Web-Client/static/css/main.a6964040.chunk.css.map",
-    "static/js/2.b953d817.chunk.js.LICENSE.txt": "/Final-Art-Web-Client/static/js/2.b953d817.chunk.js.LICENSE.txt",
+    "static/js/2.b50b1ea3.chunk.js.LICENSE.txt": "/Final-Art-Web-Client/static/js/2.b50b1ea3.chunk.js.LICENSE.txt",
     "static/media/Ixion.e7fe211c.png": "/Final-Art-Web-Client/static/media/Ixion.e7fe211c.png",
     "static/media/PressStart2P.5f45b521.ttf": "/Final-Art-Web-Client/static/media/PressStart2P.5f45b521.ttf",
     "static/media/ifrit.543e2c03.png": "/Final-Art-Web-Client/static/media/ifrit.543e2c03.png",
     "static/media/valefor.1b6c1f32.png": "/Final-Art-Web-Client/static/media/valefor.1b6c1f32.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.49f0fb9a.js",
-    "static/js/2.b953d817.chunk.js",
-    "static/css/main.a6964040.chunk.css",
-    "static/js/main.713e2bb3.chunk.js"
+    "static/js/runtime-main.679335e2.js",
+    "static/js/2.b50b1ea3.chunk.js",
+    "static/js/main.3f8f3866.chunk.js"
   ]
 }
