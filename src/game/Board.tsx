@@ -49,7 +49,6 @@ export const Board = () => {
 		const board: any = boardRef.current?.getBoundingClientRect()
 		const card: any = activeCard?.getBoundingClientRect()
 		const isOutOfBoundary: boolean = card.bottom > board.bottom || card.right > board.right
-
 		if (isOutOfBoundary || isTileOccupied) {
 			resetActiveCardPosition()
 			activeCard = null
@@ -98,6 +97,7 @@ export const Board = () => {
 	return (
 		<>
 			<div
+				style={{ backgroundColor: 'red' }}
 				ref={boardRef}
 				onMouseMove={e => moveCard(e)}
 				onMouseUp={e => dropCardOnTile(e)}>
