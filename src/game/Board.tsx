@@ -5,17 +5,17 @@ import { DisplayGameTiles } from './DisplayGameTiles'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
 import { tile, card } from '../shared/interfaces/gameInterface'
 import styled from 'styled-components'
+import { DisplayPlayerDeck } from './DisplayPlayerDeck'
 
 export const Board = () => {
-	/* const boardRef = useRef<HTMLDivElement | null>(null) */
-	const boardRef2 = useRef<HTMLDivElement | null>(null)
+	const boardRef = useRef<HTMLDivElement | null>(null)
+	const activeCard = useRef<HTMLElement | null>(null)
 	const [tiles, setTiles] = useState<Array<tile>>(tilesData)
 	const [deckOfCards, setDeckOfCards] = useState<Array<card>>(initialHandDeck)
 	const [cardBeingPlayed, setCardBeingPlayed] = useState<card>(defaultValueCard)
-	let activeCard: HTMLElement | null = null
 
 	const grabCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-		const playBoard = boardRef2.current
+		const playBoard = boardRef.current
 		const element = e.target as HTMLElement
 		if (element.classList.contains('ROFLMAO') && playBoard) {
 			element.style.position = 'absolute'
@@ -24,18 +24,19 @@ export const Board = () => {
 			element.style.left = `${x}px`
 			element.style.top = `${y}px`
 		}
-		activeCard = element
+		/* activeCard = element */
+		activeCard.current = element
 	}
 
-	const resetActiveCardPosition = () => { activeCard && (activeCard.style.position = '') }
+	const resetActiveCardPosition = () => { activeCard.current && (activeCard.current.style.position = '') }
 
 	const moveCard = (e: React.MouseEvent) => {
-		if (activeCard) {
-			activeCard.style.position = 'absolute'
+		if (activeCard.current) {
+			activeCard.current.style.position = 'absolute'
 			const x = e.clientX - 80
 			const y = e.clientY - 80
-			activeCard.style.left = `${x}px`
-			activeCard.style.top = `${y}px`
+			activeCard.current.style.left = `${x}px`
+			activeCard.current.style.top = `${y}px`
 		}
 	}
 
@@ -47,16 +48,15 @@ export const Board = () => {
 
 	const verifyDroppedCardMovement = (tileIndex: number) => {
 		const isTileOccupied = tiles[tileIndex - 1]?.card?.name
-		const board: any = boardRef2.current?.getBoundingClientRect()
-		const card: any = activeCard?.getBoundingClientRect()
-		console.log(board)
-		console.log(card)
+		const board: any = boardRef.current?.getBoundingClientRect()
+		const card: any = activeCard.current?.getBoundingClientRect()
 		const isOutOfBoundary: boolean = card.bottom > board.bottom || card.right > board.right
 		if (isOutOfBoundary || isTileOccupied) {
 			resetActiveCardPosition()
-			activeCard = null
+			activeCard.current = null
 			return false
 		} else {
+			activeCard.current = null
 			removeUsedCardFromDeck()
 			return true
 		}
@@ -71,7 +71,7 @@ export const Board = () => {
 	}
 
 	const dropCardOnTile = (e: React.MouseEvent) => {
-		const playBoard = boardRef2.current
+		const playBoard = boardRef.current
 		if (activeCard && playBoard) {
 			const x = Math.ceil((Math.floor((e.clientX - playBoard.offsetLeft) / 100) + 1) / 2)
 			const y = Math.ceil((Math.floor((e.clientY - playBoard.offsetTop) / 100) + 1) / 2)
@@ -84,7 +84,7 @@ export const Board = () => {
 
 	const displayPlayerDeck = () => {
 		return deckOfCards.map((item: card, index: number) =>
-			<Div className='ROFLMAO'
+			<Div className={item.name}
 				image={item.image}
 				key={index}
 				onMouseOver={() => setCardBeingPlayed(item)}
@@ -99,11 +99,12 @@ export const Board = () => {
 
 	return (
 		<BoardWrapper
-			ref={boardRef2}
+			ref={boardRef}
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
-			<DisplayGameTiles tiles={tiles} boardRef2={boardRef2} />
+			<DisplayGameTiles tiles={tiles} boardRef2={boardRef} />
 			{displayPlayerDeck()}
+			{/* <DisplayPlayerDeck deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef2}/> */}
 		</BoardWrapper>
 	)
 }
