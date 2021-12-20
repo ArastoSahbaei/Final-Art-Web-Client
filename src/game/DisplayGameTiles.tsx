@@ -1,27 +1,23 @@
 import { getAdjacentTiles } from 'functions/getAdjacentTiles'
-import { useRef } from 'react'
 import { tile } from 'shared/interfaces/gameInterface'
 import styled from 'styled-components'
 
-export const DisplayGameTiles = (props: { tiles: any, boardRef2: any }) => {
-	const boardRef = useRef<HTMLDivElement | null>(null)
-
-	const displayTiles = (tiles: any) => {
-		return tiles.map((item: tile) =>
-			<TileDiv ref={props.boardRef2} image={item.card.image} key={item.tileNumber} onClick={() => getAdjacentTiles(item.tileNumber)}>
-				<h1 style={{ textAlign: 'center' }}>{item.tileNumber}</h1>
-				<Paragraph>N:{item.card.cardValues.N}</Paragraph>
-				<Paragraph>E:{item.card.cardValues.E}</Paragraph>
-				<Paragraph>W:{item.card.cardValues.W}</Paragraph>
-				<Paragraph>S:{item.card.cardValues.S}</Paragraph>
-			</TileDiv>
-		)
-	}
+export const DisplayGameTiles = (props: {
+	tiles: tile[],
+	boardRef2: React.MutableRefObject<HTMLDivElement | null>
+}) => {
 
 	return (
 		<BoardWrapper>
-			{displayTiles(props.tiles)}
-			<button onClick={() => console.log(props.boardRef2.current?.getBoundingClientRect())}>lollollollollollollollol</button>
+			{props.tiles.map((item: tile) =>
+				<TileDiv key={item.tileNumber} image={item.card.image} ref={props.boardRef2} onClick={() => getAdjacentTiles(item.tileNumber)}>
+					<h1 style={{ textAlign: 'center' }}>{item.tileNumber}</h1>
+					<Paragraph>N:{item.card.cardValues.N}</Paragraph>
+					<Paragraph>E:{item.card.cardValues.E}</Paragraph>
+					<Paragraph>W:{item.card.cardValues.W}</Paragraph>
+					<Paragraph>S:{item.card.cardValues.S}</Paragraph>
+				</TileDiv>
+			)}
 		</BoardWrapper>
 	)
 }

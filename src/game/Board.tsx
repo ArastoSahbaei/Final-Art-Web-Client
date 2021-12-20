@@ -1,11 +1,11 @@
 import { useState, useRef } from 'react'
 import { defaultValueCard, tilesData } from '../shared/data/tilesData'
 import { determineTileIndex } from 'functions/determineTileIndex'
+import { DisplayPlayerDeck } from './DisplayPlayerDeck'
 import { DisplayGameTiles } from './DisplayGameTiles'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
 import { tile, card } from '../shared/interfaces/gameInterface'
 import styled from 'styled-components'
-import { DisplayPlayerDeck } from './DisplayPlayerDeck'
 
 export const Board = () => {
 	const boardRef = useRef<HTMLDivElement | null>(null)
@@ -70,18 +70,18 @@ export const Board = () => {
 	}
 
 	return (
-		<BoardWrapper
+		<Wrapper
 			ref={boardRef}
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
 			<DisplayGameTiles tiles={tiles} boardRef2={boardRef} />
 			<DisplayPlayerDeck deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 			<DisplayPlayerDeck deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-		</BoardWrapper>
+		</Wrapper>
 	)
 }
 
-const BoardWrapper = styled.div`
+const Wrapper = styled.div`
 	width: 800px;
 	background-color: red
 `
