@@ -1,11 +1,7 @@
 import styled from 'styled-components'
 
 export const DisplayPlayerDeck = (props: { deckOfCards: any, setCardBeingPlayed: any, activeCard: any, playBoard: any }) => {
-
-
-   const grabCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-      console.log(props.activeCard.current)
-		/* const playBoard = boardRef2.current */
+	const grabCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		const element = e.target as HTMLElement
 		if (element.classList.contains('ROFLMAO') && props.playBoard) {
 			element.style.position = 'absolute'
@@ -14,7 +10,6 @@ export const DisplayPlayerDeck = (props: { deckOfCards: any, setCardBeingPlayed:
 			element.style.left = `${x}px`
 			element.style.top = `${y}px`
 		}
-		/* activeCard = element */
 		props.activeCard.current = element
 	}
 

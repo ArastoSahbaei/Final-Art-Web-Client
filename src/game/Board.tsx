@@ -14,21 +14,10 @@ export const Board = () => {
 	const [deckOfCards, setDeckOfCards] = useState<Array<card>>(initialHandDeck)
 	const [cardBeingPlayed, setCardBeingPlayed] = useState<card>(defaultValueCard)
 
-	const grabCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-		const playBoard = boardRef.current
-		const element = e.target as HTMLElement
-		if (element.classList.contains('ROFLMAO') && playBoard) {
-			element.style.position = 'absolute'
-			const x = e.clientX - 80
-			const y = e.clientY - 80
-			element.style.left = `${x}px`
-			element.style.top = `${y}px`
-		}
-		/* activeCard = element */
-		activeCard.current = element
+	const resetActiveCardPosition = () => {
+		activeCard.current && (activeCard.current.style.position = '')
+		activeCard.current = null
 	}
-
-	const resetActiveCardPosition = () => { activeCard.current && (activeCard.current.style.position = '') }
 
 	const moveCard = (e: React.MouseEvent) => {
 		if (activeCard.current) {
@@ -48,15 +37,13 @@ export const Board = () => {
 
 	const verifyDroppedCardMovement = (tileIndex: number) => {
 		const isTileOccupied = tiles[tileIndex - 1]?.card?.name
-		const board: any = boardRef.current?.getBoundingClientRect()
-		const card: any = activeCard.current?.getBoundingClientRect()
-		const isOutOfBoundary: boolean = card.bottom > board.bottom || card.right > board.right
+		const board = boardRef.current?.getBoundingClientRect() as DOMRect
+		const card = activeCard.current?.getBoundingClientRect() as DOMRect
+		const isOutOfBoundary: boolean = card?.bottom > board?.bottom || card?.right > board?.right
 		if (isOutOfBoundary || isTileOccupied) {
 			resetActiveCardPosition()
-			activeCard.current = null
 			return false
 		} else {
-			activeCard.current = null
 			removeUsedCardFromDeck()
 			return true
 		}
@@ -82,29 +69,14 @@ export const Board = () => {
 		}
 	}
 
-	const displayPlayerDeck = () => {
-		return deckOfCards.map((item: card, index: number) =>
-			<Div className={item.name}
-				image={item.image}
-				key={index}
-				onMouseOver={() => setCardBeingPlayed(item)}
-				onMouseDown={e => grabCard(e)}>
-				<span> N{item.cardValues.N} </span>
-				<span> E{item.cardValues.E} </span>
-				<span> S{item.cardValues.S} </span>
-				<span> W{item.cardValues.W} </span>
-			</Div>
-		)
-	}
-
 	return (
 		<BoardWrapper
 			ref={boardRef}
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
 			<DisplayGameTiles tiles={tiles} boardRef2={boardRef} />
-			{displayPlayerDeck()}
-			{/* <DisplayPlayerDeck deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef2}/> */}
+			<DisplayPlayerDeck deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+			<DisplayPlayerDeck deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 		</BoardWrapper>
 	)
 }
