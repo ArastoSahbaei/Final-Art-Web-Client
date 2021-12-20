@@ -7,7 +7,7 @@ import { initialHandDeck } from '../shared/data/initialHandDeck'
 import { tile, card } from '../shared/interfaces/gameInterface'
 import styled from 'styled-components'
 
-export const Board = () => {
+export const GameController = () => {
 	const boardRef = useRef<HTMLDivElement | null>(null)
 	const activeCard = useRef<HTMLElement | null>(null)
 	const [tiles, setTiles] = useState<Array<tile>>(tilesData)
