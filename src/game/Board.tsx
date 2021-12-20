@@ -7,14 +7,15 @@ import { tile, card } from '../shared/interfaces/gameInterface'
 import styled from 'styled-components'
 
 export const Board = () => {
-	const boardRef = useRef<HTMLDivElement | null>(null)
+	/* const boardRef = useRef<HTMLDivElement | null>(null) */
+	const boardRef2 = useRef<HTMLDivElement | null>(null)
 	const [tiles, setTiles] = useState<Array<tile>>(tilesData)
 	const [deckOfCards, setDeckOfCards] = useState<Array<card>>(initialHandDeck)
 	const [cardBeingPlayed, setCardBeingPlayed] = useState<card>(defaultValueCard)
 	let activeCard: HTMLElement | null = null
 
 	const grabCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-		const playBoard = boardRef.current
+		const playBoard = boardRef2.current
 		const element = e.target as HTMLElement
 		if (element.classList.contains('ROFLMAO') && playBoard) {
 			element.style.position = 'absolute'
@@ -46,8 +47,10 @@ export const Board = () => {
 
 	const verifyDroppedCardMovement = (tileIndex: number) => {
 		const isTileOccupied = tiles[tileIndex - 1]?.card?.name
-		const board: any = boardRef.current?.getBoundingClientRect()
+		const board: any = boardRef2.current?.getBoundingClientRect()
 		const card: any = activeCard?.getBoundingClientRect()
+		console.log(board)
+		console.log(card)
 		const isOutOfBoundary: boolean = card.bottom > board.bottom || card.right > board.right
 		if (isOutOfBoundary || isTileOccupied) {
 			resetActiveCardPosition()
@@ -68,7 +71,7 @@ export const Board = () => {
 	}
 
 	const dropCardOnTile = (e: React.MouseEvent) => {
-		const playBoard = boardRef.current
+		const playBoard = boardRef2.current
 		if (activeCard && playBoard) {
 			const x = Math.ceil((Math.floor((e.clientX - playBoard.offsetLeft) / 100) + 1) / 2)
 			const y = Math.ceil((Math.floor((e.clientY - playBoard.offsetTop) / 100) + 1) / 2)
@@ -95,22 +98,24 @@ export const Board = () => {
 	}
 
 	return (
-		<>
-			<div
-				style={{ backgroundColor: 'red' }}
-				ref={boardRef}
-				onMouseMove={e => moveCard(e)}
-				onMouseUp={e => dropCardOnTile(e)}>
-				<DisplayGameTiles tiles={tiles} />
-				{displayPlayerDeck()}
-			</div>
-		</>
+		<BoardWrapper
+			ref={boardRef2}
+			onMouseMove={e => moveCard(e)}
+			onMouseUp={e => dropCardOnTile(e)}>
+			<DisplayGameTiles tiles={tiles} boardRef2={boardRef2} />
+			{displayPlayerDeck()}
+		</BoardWrapper>
 	)
 }
 
 interface image {
 	image: string
 }
+
+const BoardWrapper = styled.div`
+	width: 800px;
+	background-color: red
+`
 
 const Div = styled.div<image>`
 	display: inline-block;

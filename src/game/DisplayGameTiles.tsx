@@ -1,12 +1,14 @@
 import { getAdjacentTiles } from 'functions/getAdjacentTiles'
+import { useRef } from 'react'
 import { tile } from 'shared/interfaces/gameInterface'
 import styled from 'styled-components'
 
-export const DisplayGameTiles = (props: { tiles: any }) => {
+export const DisplayGameTiles = (props: { tiles: any, boardRef2: any }) => {
+	const boardRef = useRef<HTMLDivElement | null>(null)
 
 	const displayTiles = (tiles: any) => {
 		return tiles.map((item: tile) =>
-			<TileDiv image={item.card.image} key={item.tileNumber} onClick={() => getAdjacentTiles(item.tileNumber)}>
+			<TileDiv ref={props.boardRef2} image={item.card.image} key={item.tileNumber} onClick={() => getAdjacentTiles(item.tileNumber)}>
 				<h1 style={{ textAlign: 'center' }}>{item.tileNumber}</h1>
 				<Paragraph>N:{item.card.cardValues.N}</Paragraph>
 				<Paragraph>E:{item.card.cardValues.E}</Paragraph>
@@ -19,12 +21,13 @@ export const DisplayGameTiles = (props: { tiles: any }) => {
 	return (
 		<BoardWrapper>
 			{displayTiles(props.tiles)}
+			<button onClick={() => console.log(props.boardRef2.current?.getBoundingClientRect())}>lollollollollollollollol</button>
 		</BoardWrapper>
 	)
 }
 
 interface image {
-   image: string
+	image: string
 }
 
 const BoardWrapper = styled.div`
