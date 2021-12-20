@@ -81,27 +81,7 @@ export const Board = () => {
 	)
 }
 
-interface image {
-	image: string
-}
-
 const BoardWrapper = styled.div`
 	width: 800px;
 	background-color: red
-`
-
-const Div = styled.div<image>`
-	display: inline-block;
-	background: ${props => `url(${props.image})`};
-	width: 150px;
-	height: 150px;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 80px;
-	&:hover {
-		cursor: grab;
-	}
-	&:active {
-		cursor: grabbing;
-	}
 `
