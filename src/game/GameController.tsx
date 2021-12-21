@@ -12,6 +12,7 @@ export const GameController = () => {
 	const boardRef = useRef<HTMLDivElement | null>(null)
 	const activeCard = useRef<HTMLElement | null>(null)
 	const [tiles, setTiles] = useState<Array<tile>>(tilesData)
+	const [playerTurn, setPlayerTurn] = useState<boolean>(true)
 	const [deckOfCards, setDeckOfCards] = useState<Array<card>>(initialHandDeck)
 	const [cardBeingPlayed, setCardBeingPlayed] = useState<card>(defaultValueCard)
 
@@ -50,13 +51,18 @@ export const GameController = () => {
 		}
 	}
 
+	const determinePlayerTurn = () => {
+		/* setPlayerTurn(!playerTurn) */
+		const turn = playerTurn ? 'player1' : 'player2'
+		return turn
+	}
+
 	const updateGameTile = (index: number, card: card) => {
 		const tilesCopy = [...tiles]
 		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileNumber: index, card }
-		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileControlledBy: 'player1' }
+		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileControlledBy: determinePlayerTurn() }
 		setTiles(tilesCopy)
 		resetActiveCardPosition()
-		console.log(tiles)
 	}
 
 	const dropCardOnTile = (e: React.MouseEvent) => {
@@ -67,6 +73,7 @@ export const GameController = () => {
 			const tileIndex = determineTileIndex(x, y)
 			if (verifyDroppedCardMovement(tileIndex) && cardBeingPlayed.name) {
 				updateGameTile(tileIndex, cardBeingPlayed)
+				setPlayerTurn(!playerTurn)
 			}
 		}
 	}
@@ -77,8 +84,11 @@ export const GameController = () => {
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
 			<DisplayGameTiles tiles={tiles} />
-			<DisplayPlayerDeck player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-			<DisplayPlayerDeck player={'player2'} deckOfCards={initialHandDeck2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+			<br />
+			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+			<br />
+			<br />
+			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={initialHandDeck2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 		</Wrapper>
 	)
 }

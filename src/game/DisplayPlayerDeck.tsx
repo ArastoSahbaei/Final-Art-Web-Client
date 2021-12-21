@@ -6,7 +6,8 @@ export const DisplayPlayerDeck = (props: {
 	deckOfCards: card[],
 	activeCard: React.MutableRefObject<HTMLElement | null>,
 	playBoard: React.MutableRefObject<HTMLElement | null>,
-	player: string
+	player: string,
+	playerTurn: string
 }) => {
 
 	const grabCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -28,6 +29,7 @@ export const DisplayPlayerDeck = (props: {
 					<Div className={'ROFLMAO'}
 						image={item.image}
 						player={props.player}
+						playerTurn={props.playerTurn}
 						key={index}
 						onMouseOver={() => props.setCardBeingPlayed(item)}
 						onMouseDown={e => grabCard(e)}>
@@ -44,11 +46,15 @@ export const DisplayPlayerDeck = (props: {
 interface values {
 	image: string
 	player: string
+	playerTurn: string
 }
 
 const Div = styled.div<values>`
 	display: inline-block;
-	background-color: ${props => (props.player == 'player1') ? '#d04848 !important' : '#4872d0 !important'};
+
+	background-color: ${props =>
+		(props.playerTurn === props.player && props.player === 'player1') ? '#d04848 !important'
+			: (props.playerTurn === props.player) ? '#4872d0 !important' : 'grey !important'};
 	border-style: ridge;
 	background: ${props => `url(${props.image})`};
 	width: 150px;
