@@ -65,7 +65,7 @@ export const GameController = () => {
 			const x = Math.ceil((Math.floor((e.clientX - playBoard.offsetLeft) / 100) + 1) / 2)
 			const y = Math.ceil((Math.floor((e.clientY - playBoard.offsetTop) / 100) + 1) / 2)
 			const tileIndex = determineTileIndex(x, y)
-			if (verifyDroppedCardMovement(tileIndex)) {
+			if (verifyDroppedCardMovement(tileIndex) && cardBeingPlayed.name) {
 				updateGameTile(tileIndex, cardBeingPlayed)
 			}
 		}
@@ -79,7 +79,6 @@ export const GameController = () => {
 			<DisplayGameTiles tiles={tiles} boardRef={boardRef} />
 			<DisplayPlayerDeck deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 			<DisplayPlayerDeck deckOfCards={initialHandDeck2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-			{console.log(cardBeingPlayed)}
 		</Wrapper>
 	)
 }
