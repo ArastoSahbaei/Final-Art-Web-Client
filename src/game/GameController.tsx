@@ -76,7 +76,7 @@ export const GameController = () => {
 			ref={boardRef}
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
-			<DisplayGameTiles tiles={tiles} boardRef={boardRef} />
+			<DisplayGameTiles tiles={tiles} /* boardRef={boardRef} */ />
 			<DisplayPlayerDeck deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 			<DisplayPlayerDeck deckOfCards={initialHandDeck2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 		</Wrapper>

@@ -1,33 +1,33 @@
-import Bahamut from '../images/bahamut.jpg'
-import Valefor from '../images/valefor.png'
-import Ifrit from '../images/ifrit.png'
-import Shiva from '../images/shiva.png'
-import Ixion from '../images/Ixion.png'
+import Typhlosion from '../images/Typhlosion.png'
+import IgglyBuff from '../images/IgglyBuff.png'
+import Dedenne from '../images/Dedenne.png'
+import Vulpix from '../images/Vulpix.png'
+import Oddish from '../images/Oddish.png'
 
 export const initialHandDeck2 = [
 	{
-		name: 'Bahamuti',
+		name: 'Typhlosion',
 		cardValues: { N: 5, E: 5, S: 5, W: 5 },
-		image: Bahamut
+		image: Typhlosion
 	},
 	{
-		name: 'Valefori',
+		name: 'IgglyBuff',
 		cardValues: { N: 4, E: 4, S: 4, W: 4 },
-		image: Valefor
+		image: IgglyBuff
 	},
 	{
-		name: 'Ifritos',
+		name: 'Dedenne',
 		cardValues: { N: 1, E: 2, S: 3, W: 4 },
-		image: Ifrit
+		image: Dedenne
 	},
 	{
-		name: 'Shivanu',
+		name: 'Vulpix',
 		cardValues: { N: 2, E: 3, S: 4, W: 5 },
-		image: Shiva
+		image: Vulpix
 	},
 	{
-		name: 'Ixiona',
+		name: 'Oddish',
 		cardValues: { N: 3, E: 3, S: 5, W: 5 },
-		image: Ixion
+		image: Oddish
 	},
 ]

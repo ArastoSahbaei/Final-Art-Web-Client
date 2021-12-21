@@ -3,8 +3,7 @@ import { tile } from 'shared/interfaces/gameInterface'
 import styled from 'styled-components'
 
 export const DisplayGameTiles = (props: {
-	tiles: tile[],
-	boardRef: React.MutableRefObject<HTMLDivElement | null>
+	tiles: tile[]
 }) => {
 
 	return (
@@ -14,7 +13,6 @@ export const DisplayGameTiles = (props: {
 					key={item.tileNumber}
 					tileControlledBy={item.tileControlledBy}
 					image={item.card.image}
-					ref={props.boardRef}
 					onClick={() => getAdjacentTiles(item.tileNumber)}>
 					<h1 style={{ textAlign: 'center' }}>{item.tileNumber}</h1>
 					<Paragraph>N:{item.card.cardValues.N}</Paragraph>
@@ -43,6 +41,7 @@ const BoardWrapper = styled.div`
 const TileDiv = styled.div<image>`
 	background: ${props => `url(${props.image})`};
 	background-repeat: no-repeat;
+	background-size: contain;
 	background-position: center;
 	background-color: ${props => (props.tileControlledBy == 'player1') ? 'orange' : 'white'};
 	width: 200px;
