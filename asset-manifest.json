@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/Final-Art-Web-Client/static/js/main.cefc54b5.chunk.js",
-    "main.js.map": "/Final-Art-Web-Client/static/js/main.cefc54b5.chunk.js.map",
+    "main.js": "/Final-Art-Web-Client/static/js/main.534b2223.chunk.js",
+    "main.js.map": "/Final-Art-Web-Client/static/js/main.534b2223.chunk.js.map",
     "runtime-main.js": "/Final-Art-Web-Client/static/js/runtime-main.49f0fb9a.js",
     "runtime-main.js.map": "/Final-Art-Web-Client/static/js/runtime-main.49f0fb9a.js.map",
-    "static/js/2.1693b128.chunk.js": "/Final-Art-Web-Client/static/js/2.1693b128.chunk.js",
-    "static/js/2.1693b128.chunk.js.map": "/Final-Art-Web-Client/static/js/2.1693b128.chunk.js.map",
+    "static/js/2.1b07dac0.chunk.js": "/Final-Art-Web-Client/static/js/2.1b07dac0.chunk.js",
+    "static/js/2.1b07dac0.chunk.js.map": "/Final-Art-Web-Client/static/js/2.1b07dac0.chunk.js.map",
     "static/js/3.1aff28c5.chunk.js": "/Final-Art-Web-Client/static/js/3.1aff28c5.chunk.js",
     "static/js/3.1aff28c5.chunk.js.map": "/Final-Art-Web-Client/static/js/3.1aff28c5.chunk.js.map",
     "index.html": "/Final-Art-Web-Client/index.html",
-    "static/js/2.1693b128.chunk.js.LICENSE.txt": "/Final-Art-Web-Client/static/js/2.1693b128.chunk.js.LICENSE.txt",
+    "static/js/2.1b07dac0.chunk.js.LICENSE.txt": "/Final-Art-Web-Client/static/js/2.1b07dac0.chunk.js.LICENSE.txt",
     "static/media/Beartic.82e3a632.png": "/Final-Art-Web-Client/static/media/Beartic.82e3a632.png",
     "static/media/Blastoise.be8dba0a.png": "/Final-Art-Web-Client/static/media/Blastoise.be8dba0a.png",
     "static/media/Bulbasaur.961a737a.png": "/Final-Art-Web-Client/static/media/Bulbasaur.961a737a.png",
@@ -25,7 +25,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.49f0fb9a.js",
-    "static/js/2.1693b128.chunk.js",
-    "static/js/main.cefc54b5.chunk.js"
+    "static/js/2.1b07dac0.chunk.js",
+    "static/js/main.534b2223.chunk.js"
   ]
 }
