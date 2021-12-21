@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/Final-Art-Web-Client/static/js/main.8fba7242.chunk.js",
-    "main.js.map": "/Final-Art-Web-Client/static/js/main.8fba7242.chunk.js.map",
+    "main.js": "/Final-Art-Web-Client/static/js/main.cefc54b5.chunk.js",
+    "main.js.map": "/Final-Art-Web-Client/static/js/main.cefc54b5.chunk.js.map",
     "runtime-main.js": "/Final-Art-Web-Client/static/js/runtime-main.49f0fb9a.js",
     "runtime-main.js.map": "/Final-Art-Web-Client/static/js/runtime-main.49f0fb9a.js.map",
     "static/js/2.1693b128.chunk.js": "/Final-Art-Web-Client/static/js/2.1693b128.chunk.js",
@@ -20,11 +20,12 @@
     "static/media/Onix.1a37b46f.png": "/Final-Art-Web-Client/static/media/Onix.1a37b46f.png",
     "static/media/PressStart2P.5f45b521.ttf": "/Final-Art-Web-Client/static/media/PressStart2P.5f45b521.ttf",
     "static/media/Typhlosion.58350b21.png": "/Final-Art-Web-Client/static/media/Typhlosion.58350b21.png",
-    "static/media/Vulpix.48cb81f3.png": "/Final-Art-Web-Client/static/media/Vulpix.48cb81f3.png"
+    "static/media/Vulpix.48cb81f3.png": "/Final-Art-Web-Client/static/media/Vulpix.48cb81f3.png",
+    "static/media/tile.c33835dd.jpg": "/Final-Art-Web-Client/static/media/tile.c33835dd.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.49f0fb9a.js",
     "static/js/2.1693b128.chunk.js",
-    "static/js/main.8fba7242.chunk.js"
+    "static/js/main.cefc54b5.chunk.js"
   ]
 }
