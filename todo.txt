@@ -1,0 +1,3 @@
+1. Fix interface for tileControlledBy?: string
+2. make sure when card is dropped that the tileControlledBy field is updated to the username of player ('player1'/'player2')
+3. adjust colors depeneding on tileControlledBy field

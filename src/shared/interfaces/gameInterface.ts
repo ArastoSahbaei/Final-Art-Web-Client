@@ -12,5 +12,6 @@ export interface card {
 }
 export interface tile {
    tileNumber: number,
-   card: card
+   card: card,
+   tileControlledBy?: string
 }

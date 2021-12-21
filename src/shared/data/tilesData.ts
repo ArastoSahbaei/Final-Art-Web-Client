@@ -6,21 +6,21 @@ export const defaultValueCard = {
 }
 
 export const tilesData =
-   [
-   	{ tileNumber: 1, card: defaultValueCard },
-   	{ tileNumber: 2, card: defaultValueCard },
-   	{ tileNumber: 3, card: defaultValueCard },
-   	{ tileNumber: 4, card: defaultValueCard },
-   	{ tileNumber: 5, card: defaultValueCard },
-   	{ tileNumber: 6, card: defaultValueCard },
-   	{ tileNumber: 7, card: defaultValueCard },
-   	{ tileNumber: 8, card: defaultValueCard },
-   	{ tileNumber: 9, card: defaultValueCard },
-   	{ tileNumber: 10, card: defaultValueCard },
-   	{ tileNumber: 11, card: defaultValueCard },
-   	{ tileNumber: 12, card: defaultValueCard },
-   	{ tileNumber: 13, card: defaultValueCard },
-   	{ tileNumber: 14, card: defaultValueCard },
-   	{ tileNumber: 15, card: defaultValueCard },
-   	{ tileNumber: 16, card: defaultValueCard }
-   ]
+	[
+		{ tileNumber: 1, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 2, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 3, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 4, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 5, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 6, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 7, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 8, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 9, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 10, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 11, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 12, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 13, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 14, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 15, card: defaultValueCard, tileControlledBy: '' },
+		{ tileNumber: 16, card: defaultValueCard, tileControlledBy: '' }
+	]

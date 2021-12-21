@@ -4,13 +4,18 @@ import styled from 'styled-components'
 
 export const DisplayGameTiles = (props: {
 	tiles: tile[],
-	boardRef2: React.MutableRefObject<HTMLDivElement | null>
+	boardRef: React.MutableRefObject<HTMLDivElement | null>
 }) => {
 
 	return (
 		<BoardWrapper>
 			{props.tiles.map((item: tile) =>
-				<TileDiv key={item.tileNumber} image={item.card.image} ref={props.boardRef2} onClick={() => getAdjacentTiles(item.tileNumber)}>
+				<TileDiv
+					key={item.tileNumber}
+					tileControlledBy={item.tileControlledBy}
+					image={item.card.image}
+					ref={props.boardRef}
+					onClick={() => getAdjacentTiles(item.tileNumber)}>
 					<h1 style={{ textAlign: 'center' }}>{item.tileNumber}</h1>
 					<Paragraph>N:{item.card.cardValues.N}</Paragraph>
 					<Paragraph>E:{item.card.cardValues.E}</Paragraph>
@@ -24,6 +29,7 @@ export const DisplayGameTiles = (props: {
 
 interface image {
 	image: string
+	tileControlledBy: string | undefined
 }
 
 const BoardWrapper = styled.div`
@@ -38,9 +44,9 @@ const TileDiv = styled.div<image>`
 	background: ${props => `url(${props.image})`};
 	background-repeat: no-repeat;
 	background-position: center;
+	background-color: ${props => (props.tileControlledBy == 'player1') ? 'orange' : 'white'};
 	width: 200px;
    height: 200px;
-   background-color: white;   
    color: white;
    border-style: ridge;
 `

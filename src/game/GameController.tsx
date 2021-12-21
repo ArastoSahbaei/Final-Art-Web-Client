@@ -3,6 +3,7 @@ import { defaultValueCard, tilesData } from '../shared/data/tilesData'
 import { determineTileIndex } from 'functions/determineTileIndex'
 import { DisplayPlayerDeck } from './DisplayPlayerDeck'
 import { DisplayGameTiles } from './DisplayGameTiles'
+import { initialHandDeck2 } from 'shared/data/initialHandDeck2'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
 import { tile, card } from '../shared/interfaces/gameInterface'
 import styled from 'styled-components'
@@ -51,10 +52,11 @@ export const GameController = () => {
 
 	const updateGameTile = (index: number, card: card) => {
 		const tilesCopy = [...tiles]
-		const oldTileIndex = tilesCopy.findIndex(tile => tile.tileNumber === index)
-		tilesCopy[oldTileIndex] = { tileNumber: index, card }
+		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileNumber: index, card }
+		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileControlledBy: 'player1' }
 		setTiles(tilesCopy)
 		resetActiveCardPosition()
+		console.log(tiles)
 	}
 
 	const dropCardOnTile = (e: React.MouseEvent) => {
@@ -74,9 +76,10 @@ export const GameController = () => {
 			ref={boardRef}
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
-			<DisplayGameTiles tiles={tiles} boardRef2={boardRef} />
+			<DisplayGameTiles tiles={tiles} boardRef={boardRef} />
 			<DisplayPlayerDeck deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-			<DisplayPlayerDeck deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+			<DisplayPlayerDeck deckOfCards={initialHandDeck2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+			{console.log(cardBeingPlayed)}
 		</Wrapper>
 	)
 }
