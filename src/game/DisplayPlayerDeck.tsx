@@ -2,10 +2,11 @@ import { card } from 'shared/interfaces/gameInterface'
 import styled from 'styled-components'
 
 export const DisplayPlayerDeck = (props: {
-   setCardBeingPlayed: React.Dispatch<React.SetStateAction<card>>,
-   deckOfCards: card[],
-   activeCard: React.MutableRefObject<HTMLElement | null>,
-   playBoard: React.MutableRefObject<HTMLElement | null>
+	setCardBeingPlayed: React.Dispatch<React.SetStateAction<card>>,
+	deckOfCards: card[],
+	activeCard: React.MutableRefObject<HTMLElement | null>,
+	playBoard: React.MutableRefObject<HTMLElement | null>,
+	player: string
 }) => {
 
 	const grabCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -26,6 +27,7 @@ export const DisplayPlayerDeck = (props: {
 				props.deckOfCards.map((item: card, index: number) =>
 					<Div className={'ROFLMAO'}
 						image={item.image}
+						player={props.player}
 						key={index}
 						onMouseOver={() => props.setCardBeingPlayed(item)}
 						onMouseDown={e => grabCard(e)}>
@@ -39,18 +41,21 @@ export const DisplayPlayerDeck = (props: {
 	)
 }
 
-interface image {
-   image: string
+interface values {
+	image: string
+	player: string
 }
 
-const Div = styled.div<image>`
+const Div = styled.div<values>`
 	display: inline-block;
+	background-color: ${props => (props.player == 'player1') ? '#d04848 !important' : '#4872d0 !important'};
+	border-style: ridge;
 	background: ${props => `url(${props.image})`};
 	width: 150px;
 	height: 150px;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 80px;
+	background-size: 130px;
 	&:hover {
 		cursor: grab;
 	}

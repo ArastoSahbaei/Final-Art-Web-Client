@@ -14,7 +14,7 @@ export const DisplayGameTiles = (props: {
 					tileControlledBy={item.tileControlledBy}
 					image={item.card.image}
 					onClick={() => getAdjacentTiles(item.tileNumber)}>
-					<h1 style={{ textAlign: 'center' }}>{item.tileNumber}</h1>
+				{/* 	<h1 style={{ textAlign: 'center' }}>{item.tileNumber}</h1> */}
 					<Paragraph>N:{item.card.cardValues.N}</Paragraph>
 					<Paragraph>E:{item.card.cardValues.E}</Paragraph>
 					<Paragraph>W:{item.card.cardValues.W}</Paragraph>
@@ -43,7 +43,7 @@ const TileDiv = styled.div<image>`
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
-	background-color: ${props => (props.tileControlledBy == 'player1') ? 'orange' : 'white'};
+	background-color: ${props => (props.tileControlledBy == 'player1') ? '#d04848' : '#4872d0'};
 	width: 200px;
    height: 200px;
    color: white;

@@ -1,8 +1,10 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
+import tileImage from '../images/tile.jpg'
+
 export const defaultValueCard = {
 	name: '',
 	cardValues: { N: 0, E: 0, S: 0, W: 0 },
-	image: 'https://i.gyazo.com/161eced2c31405d3b2ec2a34732da018.png'
+	image: tileImage
 }
 
 export const tilesData =

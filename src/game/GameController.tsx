@@ -76,14 +76,14 @@ export const GameController = () => {
 			ref={boardRef}
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
-			<DisplayGameTiles tiles={tiles} /* boardRef={boardRef} */ />
-			<DisplayPlayerDeck deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-			<DisplayPlayerDeck deckOfCards={initialHandDeck2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+			<DisplayGameTiles tiles={tiles} />
+			<DisplayPlayerDeck player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+			<DisplayPlayerDeck player={'player2'} deckOfCards={initialHandDeck2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 		</Wrapper>
 	)
 }
 
 const Wrapper = styled.div`
 	width: 800px;
-	background-color: red
+	background-color: #e0cfcf
 `
