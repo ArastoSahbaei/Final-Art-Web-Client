@@ -58,16 +58,13 @@ export const GameController = () => {
 	}
 
 	const fight = (index: number, card: card) => {
-		console.log(index)
 		const tilesCopy = [...tiles]
 		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileNumber: index - 1, card }
 		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileControlledBy: determinePlayerTurn() }
 
 		const adjacentValues = getAdjacentTiles(index)
-		adjacentValues.N && (tilesCopy[tiles[adjacentValues.N].tileNumber - 1] = { ...tilesCopy[tiles[adjacentValues.N].tileNumber - 1], tileControlledBy: determinePlayerTurn() })
-		adjacentValues.S && (tilesCopy[tiles[adjacentValues.S].tileNumber - 1] = { ...tilesCopy[tiles[adjacentValues.S].tileNumber - 1], tileControlledBy: determinePlayerTurn() })
-		adjacentValues.S && console.log((tilesCopy[tiles[adjacentValues.S]?.tileNumber - 1]))
-		console.log(adjacentValues.S)
+		adjacentValues.N && (tilesCopy[adjacentValues.N - 1] = { ...tilesCopy[adjacentValues.N - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.S && (tilesCopy[adjacentValues.S - 1] = { ...tilesCopy[adjacentValues.S - 1], tileControlledBy: determinePlayerTurn() })
 		setTiles(tilesCopy)
 		resetActiveCardPosition()
 	}
