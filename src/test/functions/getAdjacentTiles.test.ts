@@ -1,0 +1,20 @@
+import { getAdjacentTiles } from '../../functions/getAdjacentTiles'
+
+test('getAdjacentTiles', () => {
+	expect(getAdjacentTiles(1)).toStrictEqual({'E': null, 'N': null, 'S': 5, 'W': 2})
+	expect(getAdjacentTiles(2)).toStrictEqual({'E': 1, 'N': null, 'S': 6, 'W': 3})
+	expect(getAdjacentTiles(3)).toStrictEqual({'E': 2, 'N': null, 'S': 7, 'W': 4})
+	expect(getAdjacentTiles(4)).toStrictEqual({'E': 3, 'N': null, 'S': 8, 'W': null})
+	expect(getAdjacentTiles(5)).toStrictEqual({'E': null, 'N': 1, 'S': 9, 'W': 6})
+	expect(getAdjacentTiles(6)).toStrictEqual({'E': 5, 'N': 2, 'S': 10, 'W': 7})
+	expect(getAdjacentTiles(7)).toStrictEqual({'E': 6, 'N': 3, 'S': 11, 'W': 8})
+	expect(getAdjacentTiles(8)).toStrictEqual({'E': 7, 'N': 4, 'S': 12, 'W': null})
+	expect(getAdjacentTiles(9)).toStrictEqual({'E': null, 'N': 5, 'S': 13, 'W': 10})
+	expect(getAdjacentTiles(10)).toStrictEqual({'E': 9, 'N': 6, 'S': 14, 'W': 11})
+	expect(getAdjacentTiles(11)).toStrictEqual({'E': 10, 'N': 7, 'S': 15, 'W': 12})
+	expect(getAdjacentTiles(12)).toStrictEqual({'E': 11, 'N': 8, 'S': 16, 'W': null})
+	expect(getAdjacentTiles(13)).toStrictEqual({'E': null, 'N': 9, 'S': null, 'W': 14})
+	expect(getAdjacentTiles(14)).toStrictEqual({'E': 13, 'N': 10, 'S': null, 'W': 15})
+	expect(getAdjacentTiles(15)).toStrictEqual({'E': 14, 'N': 11, 'S': null, 'W': 16})
+	expect(getAdjacentTiles(16)).toStrictEqual({'E': 15, 'N': 12, 'S': null, 'W': null})
+})

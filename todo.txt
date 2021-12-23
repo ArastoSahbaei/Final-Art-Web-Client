@@ -1,2 +1,0 @@
-1. skriv logiken för att vända kort
-2. skriv tester

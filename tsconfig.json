@@ -23,7 +23,7 @@
   },
   "include": [
     "src",
-    "test/App.test.tsx",
-    "test/setupTests.ts"
-  ]
+    "src/test/Application.tsx",
+    "src/test/setupTests.ts"
+  ],
 }

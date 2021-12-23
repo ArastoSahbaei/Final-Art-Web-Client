@@ -30,7 +30,7 @@ export const DisplayPlayerDeck = (props: {
 						image={item.image}
 						player={props.player}
 						playerTurn={props.playerTurn}
-						key={index}
+						key={Math.random()}
 						onMouseOver={() => props.setCardBeingPlayed(item)}
 						onMouseDown={e => grabCard(e)}>
 						<span> N{item.cardValues.N} </span>

@@ -10,11 +10,11 @@ export const DisplayGameTiles = (props: {
 		<BoardWrapper>
 			{props.tiles.map((item: tile) =>
 				<TileDiv
-					key={item.tileNumber}
+					key={Math.random()}
 					tileControlledBy={item.tileControlledBy}
 					image={item.card.image}
 					onClick={() => getAdjacentTiles(item.tileNumber)}>
-				{/* 	<h1 style={{ textAlign: 'center' }}>{item.tileNumber}</h1> */}
+					<h1 style={{ textAlign: 'center' }}>{item.tileNumber}</h1>
 					<Paragraph>N:{item.card.cardValues.N}</Paragraph>
 					<Paragraph>E:{item.card.cardValues.E}</Paragraph>
 					<Paragraph>W:{item.card.cardValues.W}</Paragraph>

@@ -9,6 +9,7 @@ export const defaultValueCard = {
 
 export const tilesData =
 	[
+		{ tileNumber: 0, card: defaultValueCard, tileControlledBy: '' },
 		{ tileNumber: 1, card: defaultValueCard, tileControlledBy: '' },
 		{ tileNumber: 2, card: defaultValueCard, tileControlledBy: '' },
 		{ tileNumber: 3, card: defaultValueCard, tileControlledBy: '' },
@@ -23,6 +24,5 @@ export const tilesData =
 		{ tileNumber: 12, card: defaultValueCard, tileControlledBy: '' },
 		{ tileNumber: 13, card: defaultValueCard, tileControlledBy: '' },
 		{ tileNumber: 14, card: defaultValueCard, tileControlledBy: '' },
-		{ tileNumber: 15, card: defaultValueCard, tileControlledBy: '' },
-		{ tileNumber: 16, card: defaultValueCard, tileControlledBy: '' }
+		{ tileNumber: 15, card: defaultValueCard, tileControlledBy: '' }
 	]

@@ -58,25 +58,17 @@ export const GameController = () => {
 	}
 
 	const fight = (index: number, card: card) => {
-		const indexOfPlayedCard = index
+		console.log(index)
 		const tilesCopy = [...tiles]
-		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileNumber: index, card }
+		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileNumber: index - 1, card }
 		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileControlledBy: determinePlayerTurn() }
 
-		const adjacentValues = getAdjacentTiles(indexOfPlayedCard)
-		/* 	if(adjacentValues.N) { */
-		console.log(adjacentValues)
-
-		/* tilesCopy[tileAbove] = { ...tilesCopy[tileAbove], tileControlledBy: determinePlayerTurn() } */
-		console.log(adjacentValues)
-		adjacentValues.N && (tilesCopy[tiles[adjacentValues.N].tileNumber - 2] = { ...tilesCopy[tiles[adjacentValues.N].tileNumber - 2], tileControlledBy: determinePlayerTurn() })
-		adjacentValues.S && (tilesCopy[tiles[adjacentValues.S].tileNumber - 2] = { ...tilesCopy[tiles[adjacentValues.S].tileNumber - 2], tileControlledBy: determinePlayerTurn() })
+		const adjacentValues = getAdjacentTiles(index)
+		adjacentValues.N && (tilesCopy[tiles[adjacentValues.N].tileNumber - 1] = { ...tilesCopy[tiles[adjacentValues.N].tileNumber - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.S && (tilesCopy[tiles[adjacentValues.S].tileNumber - 1] = { ...tilesCopy[tiles[adjacentValues.S].tileNumber - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.S && console.log((tilesCopy[tiles[adjacentValues.S]?.tileNumber - 1]))
+		console.log(adjacentValues.S)
 		setTiles(tilesCopy)
-
-
-		/* adjacentValues.S && (tilesCopy[tiles[adjacentValues.S].tileNumber - 1] = { ...tilesCopy[tiles[adjacentValues.S].tileNumber - 1], tileControlledBy: determinePlayerTurn() })
-		adjacentValues.E && (tilesCopy[tiles[adjacentValues.E].tileNumber - 1] = { ...tilesCopy[tiles[adjacentValues.E].tileNumber - 1], tileControlledBy: determinePlayerTurn() })
-		adjacentValues.W && (tilesCopy[tiles[adjacentValues.W].tileNumber - 1] = { ...tilesCopy[tiles[adjacentValues.W].tileNumber - 1], tileControlledBy: determinePlayerTurn() }) */
 		resetActiveCardPosition()
 	}
 
