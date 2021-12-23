@@ -7,6 +7,7 @@ import { initialHandDeck2 } from 'shared/data/initialHandDeck2'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
 import { tile, card } from '../shared/interfaces/gameInterface'
 import styled from 'styled-components'
+import { getAdjacentTiles } from 'functions/getAdjacentTiles'
 
 export const GameController = () => {
 	const boardRef = useRef<HTMLDivElement | null>(null)
@@ -52,16 +53,30 @@ export const GameController = () => {
 	}
 
 	const determinePlayerTurn = () => {
-		/* setPlayerTurn(!playerTurn) */
 		const turn = playerTurn ? 'player1' : 'player2'
 		return turn
 	}
 
-	const updateGameTile = (index: number, card: card) => {
+	const fight = (index: number, card: card) => {
+		const indexOfPlayedCard = index
 		const tilesCopy = [...tiles]
 		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileNumber: index, card }
 		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileControlledBy: determinePlayerTurn() }
+
+		const adjacentValues = getAdjacentTiles(indexOfPlayedCard)
+		/* 	if(adjacentValues.N) { */
+		console.log(adjacentValues)
+
+		/* tilesCopy[tileAbove] = { ...tilesCopy[tileAbove], tileControlledBy: determinePlayerTurn() } */
+		console.log(adjacentValues)
+		adjacentValues.N && (tilesCopy[tiles[adjacentValues.N].tileNumber - 2] = { ...tilesCopy[tiles[adjacentValues.N].tileNumber - 2], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.S && (tilesCopy[tiles[adjacentValues.S].tileNumber - 2] = { ...tilesCopy[tiles[adjacentValues.S].tileNumber - 2], tileControlledBy: determinePlayerTurn() })
 		setTiles(tilesCopy)
+
+
+		/* adjacentValues.S && (tilesCopy[tiles[adjacentValues.S].tileNumber - 1] = { ...tilesCopy[tiles[adjacentValues.S].tileNumber - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.E && (tilesCopy[tiles[adjacentValues.E].tileNumber - 1] = { ...tilesCopy[tiles[adjacentValues.E].tileNumber - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.W && (tilesCopy[tiles[adjacentValues.W].tileNumber - 1] = { ...tilesCopy[tiles[adjacentValues.W].tileNumber - 1], tileControlledBy: determinePlayerTurn() }) */
 		resetActiveCardPosition()
 	}
 
@@ -72,7 +87,7 @@ export const GameController = () => {
 			const y = Math.ceil((Math.floor((e.clientY - playBoard.offsetTop) / 100) + 1) / 2)
 			const tileIndex = determineTileIndex(x, y)
 			if (verifyDroppedCardMovement(tileIndex) && cardBeingPlayed.name) {
-				updateGameTile(tileIndex, cardBeingPlayed)
+				fight(tileIndex, cardBeingPlayed)
 				setPlayerTurn(!playerTurn)
 			}
 		}
@@ -89,6 +104,7 @@ export const GameController = () => {
 			<br />
 			<br />
 			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={initialHandDeck2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+			<button onMouseOver={() => console.log(tiles)}>display tiles</button>
 		</Wrapper>
 	)
 }
