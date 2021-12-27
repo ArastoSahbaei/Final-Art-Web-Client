@@ -4,10 +4,10 @@ import { determineTileIndex } from 'functions/determineTileIndex'
 import { DisplayPlayerDeck } from './DisplayPlayerDeck'
 import { DisplayGameTiles } from './DisplayGameTiles'
 import { initialHandDeck2 } from 'shared/data/initialHandDeck2'
+import { getAdjacentTiles } from 'functions/getAdjacentTiles'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
 import { tile, card } from '../shared/interfaces/gameInterface'
 import styled from 'styled-components'
-import { getAdjacentTiles } from 'functions/getAdjacentTiles'
 
 export const GameController = () => {
 	const boardRef = useRef<HTMLDivElement | null>(null)
