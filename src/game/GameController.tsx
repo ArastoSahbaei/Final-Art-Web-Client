@@ -63,10 +63,10 @@ export const GameController = () => {
 		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileControlledBy: determinePlayerTurn() }
 
 		const adjacentValues = getAdjacentTiles(index)
-		adjacentValues.N && (tilesCopy[adjacentValues.N - 1] = { ...tilesCopy[adjacentValues.N - 1], tileControlledBy: determinePlayerTurn() })
-		adjacentValues.E && (tilesCopy[adjacentValues.E - 1] = { ...tilesCopy[adjacentValues.E - 1], tileControlledBy: determinePlayerTurn() })
-		adjacentValues.W && (tilesCopy[adjacentValues.W - 1] = { ...tilesCopy[adjacentValues.W - 1], tileControlledBy: determinePlayerTurn() })
-		adjacentValues.S && (tilesCopy[adjacentValues.S - 1] = { ...tilesCopy[adjacentValues.S - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.N && card.cardValues.N > tiles[adjacentValues.N - 1].card.cardValues.S && (tilesCopy[adjacentValues.N - 1] = { ...tilesCopy[adjacentValues.N - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.E && card.cardValues.E > tiles[adjacentValues.E - 1].card.cardValues.W && (tilesCopy[adjacentValues.E - 1] = { ...tilesCopy[adjacentValues.E - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.W && card.cardValues.W > tiles[adjacentValues.W - 1].card.cardValues.E && (tilesCopy[adjacentValues.W - 1] = { ...tilesCopy[adjacentValues.W - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.S && card.cardValues.E > tiles[adjacentValues.S - 1].card.cardValues.N && (tilesCopy[adjacentValues.S - 1] = { ...tilesCopy[adjacentValues.S - 1], tileControlledBy: determinePlayerTurn() })
 		setTiles(tilesCopy)
 		resetActiveCardPosition()
 	}
