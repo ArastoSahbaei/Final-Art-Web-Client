@@ -69,8 +69,7 @@ export const GameController = () => {
 		adjacentValues.E && card.cardValues.E > tiles[adjacentValues.E - 1].card.cardValues.W && (tilesCopy[adjacentValues.E - 1] = { ...tilesCopy[adjacentValues.E - 1], tileControlledBy: determinePlayerTurn() })
 		adjacentValues.W && card.cardValues.W > tiles[adjacentValues.W - 1].card.cardValues.E && (tilesCopy[adjacentValues.W - 1] = { ...tilesCopy[adjacentValues.W - 1], tileControlledBy: determinePlayerTurn() })
 		adjacentValues.S && card.cardValues.E > tiles[adjacentValues.S - 1].card.cardValues.N && (tilesCopy[adjacentValues.S - 1] = { ...tilesCopy[adjacentValues.S - 1], tileControlledBy: determinePlayerTurn() })
-		/* setTiles(tilesCopy) */
-		client.send(JSON.stringify(tilesCopy))
+		sendMessage(tilesCopy)
 		resetActiveCardPosition()
 	}
 
@@ -88,6 +87,7 @@ export const GameController = () => {
 	}
 
 	useEffect(() => {
+		connectToServer()
 		client.onmessage = (message: any) => {
 			const dataFromServer = JSON.parse(message.data)
 			setTiles(dataFromServer)
