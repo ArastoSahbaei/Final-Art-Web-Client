@@ -16,6 +16,7 @@ export const GameController = () => {
 	const [tiles, setTiles] = useState<Array<tile>>(tilesData)
 	const [playerTurn, setPlayerTurn] = useState<boolean>(true)
 	const [deckOfCards, setDeckOfCards] = useState<Array<card>>(initialHandDeck)
+	const [deckOfCards2, setDeckOfCards2] = useState<Array<card>>(initialHandDeck2)
 	const [cardBeingPlayed, setCardBeingPlayed] = useState<card>(defaultValueCard)
 	const { client, sendMessage, connectToServer, recieveMessages } = useWebSocket()
 
@@ -34,9 +35,9 @@ export const GameController = () => {
 		}
 	}
 
-	const removeUsedCardFromDeck = () => {
-		const newArray = deckOfCards.filter((item) => item.name != cardBeingPlayed.name)
-		setDeckOfCards(newArray)
+	const removeUsedCardFromDeck = (deck: card[]) => {
+		const newArray = deck.filter((item) => item.name != cardBeingPlayed.name)
+		playerTurn ? setDeckOfCards(newArray) : setDeckOfCards2(newArray)
 		setCardBeingPlayed(defaultValueCard)
 	}
 
@@ -49,7 +50,8 @@ export const GameController = () => {
 			resetActiveCardPosition()
 			return false
 		} else {
-			removeUsedCardFromDeck()
+			const currentDeck = playerTurn ? deckOfCards : deckOfCards2
+			removeUsedCardFromDeck(currentDeck)
 			return true
 		}
 	}
@@ -88,10 +90,7 @@ export const GameController = () => {
 
 	useEffect(() => {
 		connectToServer()
-		client.onmessage = (message: any) => {
-			const dataFromServer = JSON.parse(message.data)
-			setTiles(dataFromServer)
-		}
+		client.onmessage = (message: any) => { setTiles(JSON.parse(message.data)) }
 	}, [])
 
 	return (
@@ -103,8 +102,7 @@ export const GameController = () => {
 			<br />
 			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 			<br />
-			<br />
-			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={initialHandDeck2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 			<button onMouseOver={() => console.log(tiles)}>{'display tiles'}</button>
 
 		</Wrapper>
