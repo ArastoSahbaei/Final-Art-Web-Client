@@ -8,6 +8,7 @@ import { getAdjacentTiles } from 'functions/getAdjacentTiles'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
 import { tile, card } from '../shared/interfaces/gameInterface'
 import styled from 'styled-components'
+import { WebSocketTest } from './WebSocketTest'
 
 export const GameController = () => {
 	const boardRef = useRef<HTMLDivElement | null>(null)
@@ -95,7 +96,8 @@ export const GameController = () => {
 			<br />
 			<br />
 			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={initialHandDeck2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-			<button onMouseOver={() => console.log(tiles)}>display tiles</button>
+			<button onMouseOver={() => console.log(tiles)}>{'display tiles'}</button>
+			<WebSocketTest />
 		</Wrapper>
 	)
 }
