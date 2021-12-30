@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { defaultValueCard, tilesData } from '../shared/data/tilesData'
 import { determineTileIndex } from 'functions/determineTileIndex'
 import { DisplayPlayerDeck } from './DisplayPlayerDeck'
@@ -8,7 +8,7 @@ import { getAdjacentTiles } from 'functions/getAdjacentTiles'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
 import { tile, card } from '../shared/interfaces/gameInterface'
 import styled from 'styled-components'
-import { WebSocketTest } from './WebSocketTest'
+import { useWebSocket } from 'hooks/useWebSocket'
 
 export const GameController = () => {
 	const boardRef = useRef<HTMLDivElement | null>(null)
@@ -17,6 +17,7 @@ export const GameController = () => {
 	const [playerTurn, setPlayerTurn] = useState<boolean>(true)
 	const [deckOfCards, setDeckOfCards] = useState<Array<card>>(initialHandDeck)
 	const [cardBeingPlayed, setCardBeingPlayed] = useState<card>(defaultValueCard)
+	const { client, sendMessage, connectToServer, recieveMessages } = useWebSocket()
 
 	const resetActiveCardPosition = () => {
 		activeCard.current && (activeCard.current.style.position = '')
@@ -68,7 +69,8 @@ export const GameController = () => {
 		adjacentValues.E && card.cardValues.E > tiles[adjacentValues.E - 1].card.cardValues.W && (tilesCopy[adjacentValues.E - 1] = { ...tilesCopy[adjacentValues.E - 1], tileControlledBy: determinePlayerTurn() })
 		adjacentValues.W && card.cardValues.W > tiles[adjacentValues.W - 1].card.cardValues.E && (tilesCopy[adjacentValues.W - 1] = { ...tilesCopy[adjacentValues.W - 1], tileControlledBy: determinePlayerTurn() })
 		adjacentValues.S && card.cardValues.E > tiles[adjacentValues.S - 1].card.cardValues.N && (tilesCopy[adjacentValues.S - 1] = { ...tilesCopy[adjacentValues.S - 1], tileControlledBy: determinePlayerTurn() })
-		setTiles(tilesCopy)
+		/* setTiles(tilesCopy) */
+		client.send(JSON.stringify(tilesCopy))
 		resetActiveCardPosition()
 	}
 
@@ -85,6 +87,13 @@ export const GameController = () => {
 		}
 	}
 
+	useEffect(() => {
+		client.onmessage = (message: any) => {
+			const dataFromServer = JSON.parse(message.data)
+			setTiles(dataFromServer)
+		}
+	}, [])
+
 	return (
 		<Wrapper
 			ref={boardRef}
@@ -97,7 +106,7 @@ export const GameController = () => {
 			<br />
 			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={initialHandDeck2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 			<button onMouseOver={() => console.log(tiles)}>{'display tiles'}</button>
-			<WebSocketTest />
+
 		</Wrapper>
 	)
 }
