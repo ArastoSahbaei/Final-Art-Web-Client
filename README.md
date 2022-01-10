@@ -1,8 +1,3 @@
-1. create board
-2. make it playable
-3. deploy
-4. make it playable with a friend
-
 The Game:
 200points (randomly) divided between X cards to each player. 
 
