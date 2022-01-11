@@ -98,12 +98,12 @@ export const GameController = () => {
 			ref={boardRef}
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
+			
 			<DisplayGameTiles tiles={tiles} />
 			<br />
 			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 			<br />
 			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-			<button onMouseOver={() => console.log(tiles)}>{'display tiles'}</button>
 
 		</Wrapper>
 	)
@@ -111,5 +111,6 @@ export const GameController = () => {
 
 const Wrapper = styled.div`
 	width: 800px;
-	background-color: #e0cfcf
+	background-color: #e0cfcf;
 `
+//<button onMouseOver={() => console.log(tiles)}>{'display tiles'}</button>

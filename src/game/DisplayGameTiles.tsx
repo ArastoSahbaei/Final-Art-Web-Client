@@ -32,15 +32,15 @@ interface image {
 
 const BoardWrapper = styled.div`
 	display: grid;
-   grid-template-columns: repeat(4, 200px);
-   grid-template-rows: repeat(4, 200px);
-   width: 800px;
-   height: 800px;
+	grid-template-columns: repeat(4, 200px);
+	grid-template-rows: repeat(4, 200px);
+	width: 800px;
+	height: 800px;
 `
 
 const TileDiv = styled.div<image>`
 	display: grid;
-	grid-template-column: repeat(1fr, 10);
+	grid-template-columns: repeat(1fr, 10);
 	grid-template-rows: repeat(1fr, 10);
 	background: ${props => `url(${props.image})`};
 	background-repeat: no-repeat;
