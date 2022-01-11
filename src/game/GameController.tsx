@@ -98,19 +98,30 @@ export const GameController = () => {
 			ref={boardRef}
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
-			
-			<DisplayGameTiles tiles={tiles} />
-			<br />
-			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-			<br />
-			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+
+			<div className='gameGrid'>
+				<div>
+					<h3>{'Player 1'}</h3>
+					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+				</div>
+				<TileGame /*ref={boardRef} onMouseMove={e => moveCard(e)} onMouseUp={e => dropCardOnTile(e)}  -- Does Not Work!*/>
+					
+					<DisplayGameTiles tiles={tiles} />
+				</TileGame>
+				<div>
+					<h3>{'Player 2'}</h3>
+					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+				</div>
+			</div>
 
 		</Wrapper>
 	)
 }
 
 const Wrapper = styled.div`
-	width: 800px;
+	width: 1200px;
 	background-color: #e0cfcf;
 `
-//<button onMouseOver={() => console.log(tiles)}>{'display tiles'}</button>
+const TileGame = styled.div`
+ 	width:800px;
+`

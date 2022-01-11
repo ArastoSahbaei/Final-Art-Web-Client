@@ -28,10 +28,18 @@ export const GlobalStyle = createGlobalStyle`
   display:flex;
   justify-content:center;
   min-height:100vh;
-  text-align: center
+  text-align: center;
+  margin-top: 100px;
   }
 
   p, span, h1, h2, h3, h4, h5, h6 {
   font-family: PressStart2P, cursive;
   }
+
+
+  .gameGrid{
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+  }
+
 `
