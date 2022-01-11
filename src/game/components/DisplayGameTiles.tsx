@@ -40,7 +40,7 @@ const BoardWrapper = styled.div`
 
 const TileDiv = styled.div<image>`
 	display: grid;
-	grid-template-column: repeat(1fr, 10);
+	grid-template-columns: repeat(1fr, 10);
 	grid-template-rows: repeat(1fr, 10);
 	background: ${props => `url(${props.image})`};
 	background-repeat: no-repeat;

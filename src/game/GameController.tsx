@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect } from 'react'
 import { defaultValueCard, tilesData } from '../shared/data/tilesData'
 import { determineTileIndex } from 'functions/determineTileIndex'
-import { DisplayPlayerDeck } from './DisplayPlayerDeck'
-import { DisplayGameTiles } from './DisplayGameTiles'
+import { DisplayPlayerDeck } from './components/DisplayPlayerDeck'
+import { DisplayGameTiles } from './components/DisplayGameTiles'
 import { initialHandDeck2 } from 'shared/data/initialHandDeck2'
 import { getAdjacentTiles } from 'functions/getAdjacentTiles'
 import { initialHandDeck } from '../shared/data/initialHandDeck'
+import { useWebSocket } from 'hooks/useWebSocket'
 import { tile, card } from '../shared/interfaces/gameInterface'
 import styled from 'styled-components'
-import { useWebSocket } from 'hooks/useWebSocket'
 
 export const GameController = () => {
 	const boardRef = useRef<HTMLDivElement | null>(null)
