@@ -103,8 +103,6 @@ export const GameController = () => {
 			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 			<br />
 			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-			<button onMouseOver={() => console.log(tiles)}>{'display tiles'}</button>
-
 		</Wrapper>
 	)
 }
