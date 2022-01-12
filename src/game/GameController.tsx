@@ -124,16 +124,15 @@ export const GameController = () => {
 }
 
 const Wrapper = styled.div`
-	width: 1200px; //1200
-	margin-left:200px;
+	width: 1200px;
 	background-color: #e0cfcf;
 `
 const TileGame = styled.div`
  	grid-area: tileGame;
 	 width:800px;
 `
-const Player1Cards = styled.div`grid-area: player1Cards;`
-const Player2Cards = styled.div`grid-area: player2Cards;`
+const Player1Cards = styled.div`grid-area: player1Cards; width: 200px;`
+const Player2Cards = styled.div`grid-area: player2Cards; width: 200px;`
 const GameGrid = styled.div`
  	display: grid;
     grid-template-areas:
