@@ -48,9 +48,9 @@ const TileDiv = styled.div<image>`
 	background-position: center;
 	background-color: ${props => (props.tileControlledBy == 'player1') ? '#d04848' : '#4872d0'};
 	width: 200px;
-   height: 200px;
-   color: white;
-   border-style: ridge;
+  	height: 200px;
+	color: white;
+	border-style: ridge;
 `
 
 interface gridPlacement {

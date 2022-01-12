@@ -86,7 +86,7 @@ export const GameController = () => {
 				setPlayerTurn(!playerTurn)
 			}
 		}
-	}
+	}       
 
 	useEffect(() => {
 		connectToServer()
@@ -95,23 +95,28 @@ export const GameController = () => {
 
 	return (
 		<Wrapper
-			ref={boardRef}
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
 
 			<GameGrid>
-				<div>
-					<h3>{'Player 1'}</h3>
-					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-				</div>
-				<TileGame /*ref={boardRef} onMouseMove={e => moveCard(e)} onMouseUp={e => dropCardOnTile(e)}  -- Does Not Work!*/>
-					
+
+				<TileGame
+					ref={boardRef}>
 					<DisplayGameTiles tiles={tiles} />
 				</TileGame>
-				<div>
+
+				<Player1Cards>
+					<h3>{'Player 1'}</h3>
+					<br />
+					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+				</Player1Cards>
+
+				<Player2Cards>
 					<h3>{'Player 2'}</h3>
+					<br />
 					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-				</div>
+				</Player2Cards>
+
 			</GameGrid>
 
 		</Wrapper>
@@ -119,13 +124,19 @@ export const GameController = () => {
 }
 
 const Wrapper = styled.div`
-	width: 1200px;
+	width: 1200px; //1200
+	margin-left:200px;
 	background-color: #e0cfcf;
 `
+const TileGame = styled.div`
+ 	grid-area: tileGame;
+	 width:800px;
+`
+const Player1Cards = styled.div`grid-area: player1Cards;`
+const Player2Cards = styled.div`grid-area: player2Cards;`
 const GameGrid = styled.div`
  	display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
-`
-const TileGame = styled.div`
- 	width:800px;
+    grid-template-areas:
+	'player1Cards tileGame player2Cards' ;
+	width: 1200px;
 `
