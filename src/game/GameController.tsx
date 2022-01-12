@@ -99,7 +99,7 @@ export const GameController = () => {
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
 
-			<div className='gameGrid'>
+			<GameGrid>
 				<div>
 					<h3>{'Player 1'}</h3>
 					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
@@ -112,7 +112,7 @@ export const GameController = () => {
 					<h3>{'Player 2'}</h3>
 					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 				</div>
-			</div>
+			</GameGrid>
 
 		</Wrapper>
 	)
@@ -121,6 +121,10 @@ export const GameController = () => {
 const Wrapper = styled.div`
 	width: 1200px;
 	background-color: #e0cfcf;
+`
+const GameGrid = styled.div`
+ 	display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
 `
 const TileGame = styled.div`
  	width:800px;
