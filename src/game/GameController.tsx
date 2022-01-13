@@ -95,19 +95,48 @@ export const GameController = () => {
 
 	return (
 		<Wrapper
-			ref={boardRef}
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
-			<DisplayGameTiles tiles={tiles} />
-			<br />
-			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-			<br />
-			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+			<GameGrid>
+				<PlayerCards>
+					<h3>{'Player 1'}</h3>
+					<br />
+					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+				</PlayerCards>
+
+				<TileGame
+					ref={boardRef}>
+					<DisplayGameTiles tiles={tiles} />
+				</TileGame>
+
+				<PlayerCards>
+					<h3>{'Player 2'}</h3>
+					<br />
+					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+				</PlayerCards>
+			</GameGrid>
 		</Wrapper>
 	)
 }
 
+
 const Wrapper = styled.div`
-	width: 800px;
-	background-color: #e0cfcf
+	margin: 0 auto;
+	margin-top: calc(100vh/12);
+  	width: 1200px;
+	height: 800px;
+	background-color: #e0cfcf;
 `
+const GameGrid = styled.div`
+	 display: grid;
+	grid-template-columns: 1fr 4fr 1fr;
+	width: 1200px;
+`
+
+const TileGame = styled.div`
+	 width:800px;
+`
+const PlayerCards = styled.div`
+	width: 200px;
+	text-align: center;`
+
