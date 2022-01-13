@@ -94,54 +94,55 @@ export const GameController = () => {
 	}, [])
 
 	return (
-		<Wrapper
-			onMouseMove={e => moveCard(e)}
-			onMouseUp={e => dropCardOnTile(e)}>
+		<Container>
+			<Wrapper
+				onMouseMove={e => moveCard(e)}
+				onMouseUp={e => dropCardOnTile(e)}>
 
-			<GameGrid>
+				<GameGrid>
+					<PlayerCards>
+						<h3>{'Player 1'}</h3>
+						<br />
+						<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+					</PlayerCards>
 
-				<TileGame
-					ref={boardRef}>
-					<DisplayGameTiles tiles={tiles} />
-				</TileGame>
+					<TileGame
+						ref={boardRef}>
+						<DisplayGameTiles tiles={tiles} />
+					</TileGame>
 
-				<Player1Cards>
-					<h3>{'Player 1'}</h3>
-					<br />
-					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-				</Player1Cards>
+					<PlayerCards>
+						<h3>{'Player 2'}</h3>
+						<br />
+						<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+					</PlayerCards>
 
-				<Player2Cards>
-					<h3>{'Player 2'}</h3>
-					<br />
-					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-				</Player2Cards>
+				</GameGrid>
 
-			</GameGrid>
-
-		</Wrapper>
+			</Wrapper>
+		</Container>
 	)
 }
 
+const Container = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+`
 const Wrapper = styled.div`
-	display:flex;
- 	justify-content:center;
-  	text-align: center;
   	width: 1200px;
 	height: 800px;
-	margin: 0 auto;
-	margin-top: 10px;
 	background-color: #e0cfcf;
 `
 const TileGame = styled.div`
- 	grid-area: tileGame;
 	 width:800px;
 `
-const Player1Cards = styled.div`grid-area: player1Cards; width: 200px;`
-const Player2Cards = styled.div`grid-area: player2Cards; width: 200px;`
+const PlayerCards = styled.div`
+	width: 200px;
+	text-align: center;	`
 const GameGrid = styled.div`
  	display: grid;
-    grid-template-areas:
-	'player1Cards tileGame player2Cards' ;
+	grid-template-columns: 1fr 4fr 1fr;
 	width: 1200px;
 `
