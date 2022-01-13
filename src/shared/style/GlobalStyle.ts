@@ -25,11 +25,6 @@ export const GlobalStyle = createGlobalStyle`
 
   body, html {
 	animation: ${fadeInOpacity} 500ms ease-in;
-  display:flex;
-  justify-content:center;
-  min-height:100vh;
-  text-align: center;
-  margin-top: 10px;
   }
 
   p, span, h1, h2, h3, h4, h5, h6 {

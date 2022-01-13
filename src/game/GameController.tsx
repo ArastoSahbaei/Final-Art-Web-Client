@@ -124,7 +124,13 @@ export const GameController = () => {
 }
 
 const Wrapper = styled.div`
-	width: 1200px;
+	display:flex;
+ 	justify-content:center;
+  	text-align: center;
+  	width: 1200px;
+	height: 800px;
+	margin: 0 auto;
+	margin-top: 10px;
 	background-color: #e0cfcf;
 `
 const TileGame = styled.div`
