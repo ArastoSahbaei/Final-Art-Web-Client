@@ -122,7 +122,7 @@ export const GameController = () => {
 
 const Wrapper = styled.div`
 	margin: 0 auto;
-	margin-top: 7%;
+	margin-top: calc(100vh/12);
   	width: 1200px;
 	height: 800px;
 	background-color: #e0cfcf;
