@@ -14,10 +14,10 @@ export const DisplayGameTiles = (props: {
 					tileControlledBy={item.tileControlledBy}
 					image={item.card.image}
 					onClick={() => getAdjacentTiles(item.tileNumber)}>
-					{/* <h1 style={{ textAlign: 'center' }}>{item.tileNumber}</h1> */}
+					<h1 style={{ textAlign: 'center' }}>{item.tileNumber}</h1>
 					<Paragraph row='1/1' column='6/6'>{item.card.cardValues.N}</Paragraph>
-					<Paragraph row='6/6' column='1/1'>{item.card.cardValues.E}</Paragraph>
-					<Paragraph row='6/6' column='11/11'>{item.card.cardValues.W}</Paragraph>
+					<Paragraph row='6/6' column='1/1'>{item.card.cardValues.W}</Paragraph>
+					<Paragraph row='6/6' column='11/11'>{item.card.cardValues.E}</Paragraph>
 					<Paragraph row='11/11' column='6/6'>{item.card.cardValues.S}</Paragraph>
 				</TileDiv>
 			)}
