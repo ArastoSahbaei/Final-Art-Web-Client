@@ -5,7 +5,7 @@ export const HomeView = () => {
     
 
     return (
-        <div className={"homeContainer"}>
+        <div>
          
             <h1>{"Welcome to the HomeView"}</h1>
             

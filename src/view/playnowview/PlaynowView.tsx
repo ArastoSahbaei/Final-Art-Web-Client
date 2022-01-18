@@ -5,7 +5,7 @@ export const PlaynowView = () => {
     
 
     return (
-        <div className={"playnowContainer"}>
+        <div>
          
             <h1>{"Play now!"}</h1>
             

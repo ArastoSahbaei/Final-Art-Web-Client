@@ -1,6 +1,6 @@
 import { GameController } from 'game/GameController'
 import { GlobalStyle } from './shared/style/GlobalStyle'
-import { NavBar } from './game/components/navigation/desktopnavigation/DesktopNavigation'
+import { Navigation } from './game/components/navigation/desktopnavigation/DesktopNavigation'
 
 import { Routing } from './route/Routes'
 
@@ -9,7 +9,7 @@ export const Application = () => {
 		<>
 			<GlobalStyle />
 			<Routing>
-				<NavBar />	
+				<Navigation />	
 			</Routing>
 			
 			<GameController />

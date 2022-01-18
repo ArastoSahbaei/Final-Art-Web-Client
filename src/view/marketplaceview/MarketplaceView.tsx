@@ -5,7 +5,7 @@ export const MarketplaceView = () => {
     
 
     return (
-        <div className={"marketplaceContainer"}>
+        <div>
          
             <h1>{"Marketplace"}</h1>
             

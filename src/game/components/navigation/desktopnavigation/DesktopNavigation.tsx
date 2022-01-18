@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-export const NavBar = () => {
+export const Navigation = () => {
     const navigate = useNavigate()
 
     return(
