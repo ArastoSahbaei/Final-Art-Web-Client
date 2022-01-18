@@ -7,27 +7,27 @@ import Bulbasaur from '../images/Bulbasaur.png'
 export const initialHandDeck = [
 	{
 		name: 'Beartic',
-		cardValues: { N: 5, E: 5, S: 5, W: 5 },
+		cardValues: { T: 5, R: 5, B: 5, L: 5 },
 		image: Beartic
 	},
 	{
 		name: 'Blastoise',
-		cardValues: { N: 4, E: 4, S: 4, W: 4 },
+		cardValues: { T: 4, R: 4, B: 4, L: 4 },
 		image: Blastoise
 	},
 	{
 		name: 'Onix',
-		cardValues: { N: 1, E: 2, S: 3, W: 4 },
+		cardValues: { T: 1, R: 2, B: 3, L: 4 },
 		image: Onix
 	},
 	{
 		name: 'Bulbasaur',
-		cardValues: { N: 2, E: 3, S: 4, W: 5 },
+		cardValues: { T: 2, R: 3, B: 4, L: 5 },
 		image: Bulbasaur
 	},
 	{
 		name: 'Meowth',
-		cardValues: { N: 3, E: 3, S: 5, W: 5 },
+		cardValues: { T: 3, R: 3, B: 5, L: 5 },
 		image: Meowth
 	},
 ]
