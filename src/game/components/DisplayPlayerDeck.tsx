@@ -33,10 +33,10 @@ export const DisplayPlayerDeck = (props: {
 						key={Math.random()}
 						onMouseOver={() => props.setCardBeingPlayed(item)}
 						onMouseDown={e => grabCard(e)}>
-						<span> {'N'}{item.cardValues.N} </span>
-						<span> {'E'}{item.cardValues.E} </span>
-						<span> {'S'}{item.cardValues.S} </span>
-						<span> {'W'}{item.cardValues.W} </span>
+						<span> {'T'}{item.cardValues.T} </span>
+						<span> {'R'}{item.cardValues.R} </span>
+						<span> {'B'}{item.cardValues.B} </span>
+						<span> {'L'}{item.cardValues.L} </span>
 					</Div>
 				)}
 		</>

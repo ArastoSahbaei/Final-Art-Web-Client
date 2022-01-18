@@ -1,8 +1,8 @@
 export interface cardValues {
-   N: number,
-   E: number,
-   S: number,
-   W: number
+   T: number,
+   R: number,
+   B: number,
+   L: number
 }
 
 export interface card {

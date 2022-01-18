@@ -6,10 +6,10 @@ export const getAdjacentTiles = (tile: number) => {
 	const column = getColumn(tile)
 
 	const adjacent = {
-		E: getRow(tile - 1) === row ? tile - 1 : null,
-		W: getRow(tile + 1) === row ? tile + 1 : null,
-		N: (tile - 4 > 0) ? tile - 4 : null,
-		S: (tile + 4 <= 16) ? tile + 4 : null
+		R: getRow(tile - 1) === row ? tile - 1 : null,
+		L: getRow(tile + 1) === row ? tile + 1 : null,
+		T: (tile - 4 > 0) ? tile - 4 : null,
+		B: (tile + 4 <= 16) ? tile + 4 : null
 	}
 
 	/* 	console.log('VALUE: ' + tile)
