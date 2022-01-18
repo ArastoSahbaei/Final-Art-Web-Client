@@ -19,6 +19,7 @@ export const DisplayGameTiles = (props: {
 					<Paragraph row='6/6' column='1/1'>{item.card.cardValues.L}</Paragraph>
 					<Paragraph row='6/6' column='11/11'>{item.card.cardValues.R}</Paragraph>
 					<Paragraph row='11/11' column='6/6'>{item.card.cardValues.B}</Paragraph>
+
 				</TileDiv>
 			)}
 		</BoardWrapper>
