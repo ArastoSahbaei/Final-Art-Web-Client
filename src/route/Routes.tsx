@@ -3,7 +3,7 @@ import { HomeView } from "../view/homeview/HomeView"
 import { MarketplaceView } from "../view/marketplaceview/MarketplaceView"
 import { PlaynowView } from "../view/playnowview/PlaynowView"
 
-export const Routing = (props: { children: React.ReactChild[] }) => {
+export const Routing = (props: { children: React.ReactChild }) => {
     return (
         <Router>
             {props.children}
