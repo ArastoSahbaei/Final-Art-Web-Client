@@ -1,14 +1,7 @@
-
-
-export const MarketplaceView = () => {
-
-    
-
-    return (
-        <div>
-         
-            <h1>{"Marketplace"}</h1>
-            
-        </div>
-    )
+export const MarketPlaceView = () => {
+	return (
+		<div>
+			<h1>{'Marketplace'}</h1>
+		</div>
+	)
 }

@@ -1,20 +1,15 @@
 import { useNavigate } from 'react-router-dom'
-import styled from 'styled-components'
-
-import RoutingPath from '../../../../route/RoutingPath'
-
+import RoutingPath from '../../../../routes/RoutingPath'
 
 export const MobileNavigation = () => {
-    const navigate = useNavigate()
+	const navigate = useNavigate()
 
 	return (
-        // Ska ta bort det här nere. La mest in något nu, så att inte programmet bråkar
+	// Ska ta bort det här nere. La mest in något nu, så att inte programmet bråkar
 		<div>
-            <button onClick={() => navigate(RoutingPath.homeView)} >{'Home'}</button>
-            <button onClick={() => navigate(RoutingPath.marketplaceView)} >{'Marketplace'}</button>
-            <button onClick={() => navigate(RoutingPath.playnowView)}>{'Play Now!'}</button> 
-
-            
-        </div>
+			<button onClick={() => navigate(RoutingPath.homeView)} >{'Home'}</button>
+			<button onClick={() => navigate(RoutingPath.marketPlaceView)} >{'Marketplace'}</button>
+			<button onClick={() => navigate(RoutingPath.playNowView)}>{'Play Now!'}</button> 
+		</div>
 	)
 }

@@ -2,7 +2,7 @@ import { GameController } from 'game/GameController'
 import { GlobalStyle } from './shared/style/GlobalStyle'
 import { DesktopNavigation } from './game/components/navigation/desktopnavigation/DesktopNavigation'
 
-import { Routing } from './route/Routes'
+import { Routing } from './routes/Routes'
 
 export const Application = () => {
 	return (
