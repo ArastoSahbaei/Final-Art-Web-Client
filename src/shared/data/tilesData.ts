@@ -3,7 +3,7 @@ import tileImage from '../images/tile.jpg'
 
 export const defaultValueCard = {
 	name: '',
-	cardValues: { N: 0, E: 0, S: 0, W: 0 },
+	cardValues: { T: 0, R: 0, B: 0, L: 0 },
 	image: tileImage
 }
 

@@ -67,10 +67,10 @@ export const GameController = () => {
 		tilesCopy[index - 1] = { ...tilesCopy[index - 1], tileControlledBy: determinePlayerTurn() }
 
 		const adjacentValues = getAdjacentTiles(index)
-		adjacentValues.N && card.cardValues.N > tiles[adjacentValues.N - 1].card.cardValues.S && (tilesCopy[adjacentValues.N - 1] = { ...tilesCopy[adjacentValues.N - 1], tileControlledBy: determinePlayerTurn() })
-		adjacentValues.E && card.cardValues.E > tiles[adjacentValues.E - 1].card.cardValues.W && (tilesCopy[adjacentValues.E - 1] = { ...tilesCopy[adjacentValues.E - 1], tileControlledBy: determinePlayerTurn() })
-		adjacentValues.W && card.cardValues.W > tiles[adjacentValues.W - 1].card.cardValues.E && (tilesCopy[adjacentValues.W - 1] = { ...tilesCopy[adjacentValues.W - 1], tileControlledBy: determinePlayerTurn() })
-		adjacentValues.S && card.cardValues.E > tiles[adjacentValues.S - 1].card.cardValues.N && (tilesCopy[adjacentValues.S - 1] = { ...tilesCopy[adjacentValues.S - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.T && card.cardValues.T > tiles[adjacentValues.T - 1].card.cardValues.B && (tilesCopy[adjacentValues.T - 1] = { ...tilesCopy[adjacentValues.T - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.L && card.cardValues.L > tiles[adjacentValues.L - 1].card.cardValues.R && (tilesCopy[adjacentValues.L - 1] = { ...tilesCopy[adjacentValues.L - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.R && card.cardValues.R > tiles[adjacentValues.R - 1].card.cardValues.L && (tilesCopy[adjacentValues.R - 1] = { ...tilesCopy[adjacentValues.R - 1], tileControlledBy: determinePlayerTurn() })
+		adjacentValues.B && card.cardValues.B > tiles[adjacentValues.B - 1].card.cardValues.T && (tilesCopy[adjacentValues.B - 1] = { ...tilesCopy[adjacentValues.B - 1], tileControlledBy: determinePlayerTurn() })
 		sendMessage(tilesCopy)
 		resetActiveCardPosition()
 	}
@@ -95,19 +95,48 @@ export const GameController = () => {
 
 	return (
 		<Wrapper
-			ref={boardRef}
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
-			<DisplayGameTiles tiles={tiles} />
-			<br />
-			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
-			<br />
-			<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+			<GameGrid>
+				<PlayerCards>
+					<h3>{'Player 1'}</h3>
+					<br />
+					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+				</PlayerCards>
+
+				<TileGame
+					ref={boardRef}>
+					<DisplayGameTiles tiles={tiles} />
+				</TileGame>
+
+				<PlayerCards>
+					<h3>{'Player 2'}</h3>
+					<br />
+					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
+				</PlayerCards>
+			</GameGrid>
 		</Wrapper>
 	)
 }
 
+
 const Wrapper = styled.div`
-	width: 800px;
-	background-color: #e0cfcf
+	margin: 0 auto;
+	margin-top: calc(100vh/12);
+  	width: 1200px;
+	height: 800px;
+	background-color: #e0cfcf;
 `
+const GameGrid = styled.div`
+	 display: grid;
+	grid-template-columns: 1fr 4fr 1fr;
+	width: 1200px;
+`
+
+const TileGame = styled.div`
+	 width:800px;
+`
+const PlayerCards = styled.div`
+	width: 200px;
+	text-align: center;`
+
