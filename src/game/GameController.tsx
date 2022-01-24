@@ -45,7 +45,7 @@ export const GameController = () => {
 		const isTileOccupied = tiles[tileIndex - 1]?.card?.name
 		const board = boardRef.current?.getBoundingClientRect() as DOMRect
 		const card = activeCard.current?.getBoundingClientRect() as DOMRect
-		const isOutOfBoundary: boolean = card?.bottom > board?.bottom || card?.right > board?.right
+		const isOutOfBoundary: boolean = card?.bottom > board?.bottom || card?.top < board?.top || card?.right > board?.right|| card?.left < board?.left
 		if (isOutOfBoundary || isTileOccupied) {
 			resetActiveCardPosition()
 			return false
