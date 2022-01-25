@@ -31,3 +31,7 @@ export const GlobalStyle = createGlobalStyle`
   font-family: PressStart2P, cursive;
   }
 `
+// För desktopNav
+
+export const primaryColor = '#f59300'
+export const secondaryFont = 'AlegreyaSans'
