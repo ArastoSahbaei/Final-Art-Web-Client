@@ -5,7 +5,7 @@ import { primaryColor, secondaryFont } from '../../../../shared/style/GlobalStyl
 import useScrollPosition from '../../../../hooks/useScrollPosition'
 
 export const DesktopNavigation = () => {
-	const navigate = useNavigate()
+	// const navigate = useNavigate()
 	const scrollPosition = useScrollPosition()
 
 	return(
@@ -108,12 +108,4 @@ const ParagraphWrapper = styled.div`
 		justify-content: space-between;
 	`
 
-
-/*
-	<div>
-			<button onClick={() => navigate(RoutingPath.homeView)} >{'Home'}</button>
-			<button onClick={() => navigate(RoutingPath.marketPlaceView)} >{'Marketplace'}</button>
-			<button onClick={() => navigate(RoutingPath.playNowView)}>{'Play Now!'}</button> 
-		</div>
-		*/
         
