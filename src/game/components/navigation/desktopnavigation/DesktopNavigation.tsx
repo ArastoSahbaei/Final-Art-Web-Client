@@ -1,13 +1,22 @@
-import { useNavigate, NavLink } from 'react-router-dom'
+import { useNavigate, NavLink, Route, Routes, useResolvedPath, useMatch, Link, Outlet } from 'react-router-dom'
+import type { LinkProps } from 'react-router-dom'
 import RoutingPath from '../../../../routes/RoutingPath'
 import styled from 'styled-components'
 import { primaryColor, secondaryFont } from '../../../../shared/style/GlobalStyle'
 import useScrollPosition from '../../../../hooks/useScrollPosition'
+import { MarketPlaceView } from 'view/marketplaceview/MarketPlaceView'
+import { PlayNowView } from 'view/playnowview/PlayNowView'
+import { HomeView } from 'view/homeview/HomeView'
 
 export const DesktopNavigation = () => {
 	// const navigate = useNavigate()
 	const scrollPosition = useScrollPosition()
 
+
+
+	// <Paragraph to={(RoutingPath.homeView)}>{'Home'}</Paragraph>
+	// <Paragraph to={(RoutingPath.marketPlaceView)}>{'Marketplace'}</Paragraph>
+	// <Paragraph to={(RoutingPath.playNowView)}>{'Play Now!'}</Paragraph>
 	return(
 		<Wrapper scrollPosition={scrollPosition}>
 			<WrapperBackground />
@@ -15,14 +24,63 @@ export const DesktopNavigation = () => {
 				<GridCell column1={'5/9'} column2={'5/10'} column3={'5/12'}>
 					<ParagraphWrapper>
 						
-						<Paragraph to={(RoutingPath.homeView)}>{'Home'}</Paragraph>
-						<Paragraph to={(RoutingPath.marketPlaceView)}>{'Marketplace'}</Paragraph>
-						<Paragraph to={(RoutingPath.playNowView)}>{'Play Now!'}</Paragraph>
+						<Routes>
+							<Route path='/' element={<Layout />}>
+								<Route path={(RoutingPath.homeView)} element={<HomeView />} />
+								<Route path={(RoutingPath.marketPlaceView)} element={<MarketPlaceView />} />
+								<Route path={(RoutingPath.playNowView)} element={<PlayNowView />} />
+							</Route>
+						</Routes>
+
 					</ParagraphWrapper>
+
+					
 				</GridCell>
 			</Grid>
 		</Wrapper>
 	)}
+
+function CustomLink({ children, to, ...props }: LinkProps) {
+	const resolved = useResolvedPath(to)
+	const match = useMatch({ path: resolved.pathname, end: true })
+
+	return (
+		<div>
+			<Link style={{ textDecoration: match ? 'underline' : 'none' }}
+				to={to}  {...props}>
+				{children}
+			</Link>
+			{match && ' (active)'}
+		</div>
+	)
+}
+
+function Layout() {
+	return (
+		<div>
+			<nav>
+				<ul>
+					<li>
+						<CustomLink to='/'>{'Home'}</CustomLink>
+					</li>
+					<li>
+						<CustomLink to={(RoutingPath.marketPlaceView)}>{'Marketplace'}</CustomLink>
+					</li>
+					<li>
+						<CustomLink to={(RoutingPath.playNowView)}>{'Play Now'}</CustomLink>
+					</li>
+				</ul>
+			</nav>
+
+			<hr />
+
+			<Outlet />
+		</div>
+	)
+}
+
+
+
 	interface x {
 		column1?: string | '',
 		column2?: string | ''
@@ -79,20 +137,8 @@ const WrapperBackground = styled.div`
 		height: 100%;
 		z-index: -1;
 	`
-const Paragraph = styled(NavLink).attrs(({ activeClassName = 'is-active' }) => ({
-	activeClassName,
-}))`
-	  font-weight: 600;
-		cursor: pointer;
-		text-transform: uppercase;
-		font-family: ${secondaryFont};
-		text-decoration: none;
-		color: white;
-		align-self: center;
-		&.is-active {
-		  color: ${primaryColor};
-		}
-	  `
+
+
 	
 export const Paragraph2 = styled.p`
 		font-weight: 600;
