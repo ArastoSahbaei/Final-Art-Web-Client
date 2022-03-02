@@ -1,85 +1,30 @@
-import { useNavigate, NavLink, Route, Routes, useResolvedPath, useMatch, Link, Outlet } from 'react-router-dom'
+import { useNavigate, NavLink, Route, Routes, useResolvedPath, useMatch, Link  } from 'react-router-dom'
 import type { LinkProps } from 'react-router-dom'
 import RoutingPath from '../../../../routes/RoutingPath'
 import styled from 'styled-components'
 import { primaryColor, secondaryFont } from '../../../../shared/style/GlobalStyle'
 import useScrollPosition from '../../../../hooks/useScrollPosition'
-import { MarketPlaceView } from 'view/marketplaceview/MarketPlaceView'
-import { PlayNowView } from 'view/playnowview/PlayNowView'
-import { HomeView } from 'view/homeview/HomeView'
+
 
 export const DesktopNavigation = () => {
-	// const navigate = useNavigate()
+	const navigate = useNavigate()
 	const scrollPosition = useScrollPosition()
 
 
-
-	// <Paragraph to={(RoutingPath.homeView)}>{'Home'}</Paragraph>
-	// <Paragraph to={(RoutingPath.marketPlaceView)}>{'Marketplace'}</Paragraph>
-	// <Paragraph to={(RoutingPath.playNowView)}>{'Play Now!'}</Paragraph>
 	return(
 		<Wrapper scrollPosition={scrollPosition}>
 			<WrapperBackground />
 			<Grid>
-				<GridCell column1={'5/9'} column2={'5/10'} column3={'5/12'}>
+				<GridCell column1={'3/6'} column2={'3/8'} column3={'3/10'}>
 					<ParagraphWrapper>
-						
-						<Routes>
-							<Route path='/' element={<Layout />}>
-								<Route path={(RoutingPath.homeView)} element={<HomeView />} />
-								<Route path={(RoutingPath.marketPlaceView)} element={<MarketPlaceView />} />
-								<Route path={(RoutingPath.playNowView)} element={<PlayNowView />} />
-							</Route>
-						</Routes>
-
-					</ParagraphWrapper>
-
-					
+						<Button onClick={() => navigate(RoutingPath.homeView)}>{'Home'}</Button>
+						<Button onClick={() => navigate(RoutingPath.marketPlaceView)}>{'Marketplace'}</Button>
+						<Button onClick={() => navigate(RoutingPath.playNowView)}>{'Play Now!'} </Button>
+					</ParagraphWrapper>	
 				</GridCell>
 			</Grid>
 		</Wrapper>
 	)}
-
-function CustomLink({ children, to, ...props }: LinkProps) {
-	const resolved = useResolvedPath(to)
-	const match = useMatch({ path: resolved.pathname, end: true })
-
-	return (
-		<div>
-			<Link style={{ textDecoration: match ? 'underline' : 'none' }}
-				to={to}  {...props}>
-				{children}
-			</Link>
-			{match && ' (active)'}
-		</div>
-	)
-}
-
-function Layout() {
-	return (
-		<div>
-			<nav>
-				<ul>
-					<li>
-						<CustomLink to='/'>{'Home'}</CustomLink>
-					</li>
-					<li>
-						<CustomLink to={(RoutingPath.marketPlaceView)}>{'Marketplace'}</CustomLink>
-					</li>
-					<li>
-						<CustomLink to={(RoutingPath.playNowView)}>{'Play Now'}</CustomLink>
-					</li>
-				</ul>
-			</nav>
-
-			<hr />
-
-			<Outlet />
-		</div>
-	)
-}
-
-
 
 	interface x {
 		column1?: string | '',
@@ -91,7 +36,18 @@ function Layout() {
 		scrollPosition: number
 	}
 	
-	
+const Button = styled.div`
+	  font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: ${secondaryFont};
+    text-decoration: none;
+    color: white;
+    align-self: center;
+    &.is-active {
+      color: ${primaryColor};
+    }
+	`
 	
 const Grid = styled.div`
 		display: grid;
