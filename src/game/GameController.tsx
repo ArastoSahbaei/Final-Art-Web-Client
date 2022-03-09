@@ -9,6 +9,7 @@ import { initialHandDeck } from '../shared/data/initialHandDeck'
 import { useWebSocket } from 'hooks/useWebSocket'
 import { tile, card } from '../shared/interfaces/gameInterface'
 import styled from 'styled-components'
+import { isOutOfBoundary } from 'functions/isOutOfBoundary'
 
 export const GameController = () => {
 	const boardRef = useRef<HTMLDivElement | null>(null)
@@ -41,13 +42,17 @@ export const GameController = () => {
 		setCardBeingPlayed(defaultValueCard)
 	}
 
-	const verifyDroppedCardMovement = (tileIndex: number) => {
-		const isTileOccupied = tiles[tileIndex - 1]?.card?.name
+	const isCardOutOfBoundary = () => {
 		const board = boardRef.current?.getBoundingClientRect() as DOMRect
 		const card = activeCard.current?.getBoundingClientRect() as DOMRect
 		const isOutOfBoundary: boolean = card?.bottom > board?.bottom || card?.top < board?.top || card?.right > board?.right|| card?.left < board?.left
-		if (isOutOfBoundary || isTileOccupied) {
-			resetActiveCardPosition()
+		return isOutOfBoundary
+	}
+
+	const verifyDroppedCardMovement = (tileIndex: number) => {
+		const isTileOccupied = tiles[tileIndex - 1]?.card?.name
+		if (isTileOccupied || isCardOutOfBoundary()) {
+			resetActiveCardPosition() 
 			return false
 		} else {
 			const currentDeck = playerTurn ? deckOfCards : deckOfCards2
@@ -55,6 +60,7 @@ export const GameController = () => {
 			return true
 		}
 	}
+	
 
 	const determinePlayerTurn = () => {
 		const turn = playerTurn ? 'player1' : 'player2'
