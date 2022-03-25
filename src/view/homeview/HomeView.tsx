@@ -1,7 +1,10 @@
+import { DisplayHome } from "./components/DisplayHome"
+
 export const HomeView = () => {
 	return (
 		<div>
 			<h1>{'Welcome to the HomeView'}</h1>
+			<DisplayHome />
 		</div>
 	)
 }
