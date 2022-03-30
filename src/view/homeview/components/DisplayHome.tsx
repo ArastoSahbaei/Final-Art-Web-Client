@@ -13,7 +13,7 @@ export const DisplayHome = () => {
 			<WrapperBackground />
 			<HomeGrid>
 				<HomeCell column1={'1/4'} column2={'3/4'}>
-					<h1>{'Welcome to PokéCards!'}</h1> 
+					<H1>{'Welcome to PokéCards!'}</H1> 
 					
 					<ParagraphWrapper>
 						<Button onClick={() => navigate(RoutingPath.playNowView)}>{'Play Now!'} </Button>
@@ -74,7 +74,14 @@ const ParagraphWrapper = styled.div`
 	`
 
 const Button = styled.div`
+	border-radius: 25px;
+	background-color: #ad0404;
+	padding: 10px 60px;
+	margin: 10px 0px;
+	
+
 	font-weight: 600;
+	font-size: 40px;
 	width: 100%;
     cursor: pointer;
     text-transform: uppercase;
@@ -85,4 +92,8 @@ const Button = styled.div`
     &.is-active {
       color: ${primaryColor};
     }
+	`
+const H1 = styled.div`
+	font-family: 600;
+	font-size: 50px;
 	`
