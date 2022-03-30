@@ -2,20 +2,19 @@ import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import { useNavigate   } from 'react-router-dom'
 import { primaryColor, secondaryFont } from 'shared/style/GlobalStyle'
+import testPic from '../../../shared/images/Beartic.png'
 
 export const DisplayHome = () => {
-	
 	const navigate = useNavigate()
-
 
 	return (
 		<Wrapper>
 			<WrapperBackground />
 			<HomeGrid>
 				<HomeCell column1={'1/4'} column2={'3/4'}>
-					<H1>{'Welcome to PokéCards! The premier cardbattle game on the market.'}</H1> 
-					
+					<H1>{'Welcome to PokéCards! The premier cardbattle game on the market. Play with your favorite pokémon in the new tactical arena.'}</H1> 
 					<ParagraphWrapper>
+						<PokeImage src={testPic} alt='Error...' />
 						<Button onClick={() => navigate(RoutingPath.playNowView)}>{'Play Now!'} </Button>
 					</ParagraphWrapper>
 				</HomeCell>
@@ -48,20 +47,20 @@ const WrapperBackground = styled.div`
 	`
 
 const HomeGrid = styled.div`
-    display: grid;
-	grid-template-columns: 1fr 4fr 1fr;
-	width: 1000px;
+	margin-left: 790px;
+	width: 500px;
     `
 
 const HomeCell = styled.div<x>`
 		grid-column: ${(props) => props.column1};
 
 		border-radius: 5px;
-		background-color: #5956f0;
+		background-color: #4872d0;
 		padding: 5px 15px;
 		margin: 10px 0px;
 		border: 3px solid whitesmoke;
-
+		width: 750px;
+		
 
 		display: grid;
 		align-items: center;
@@ -83,7 +82,7 @@ const ParagraphWrapper = styled.div`
 
 const Button = styled.div`
 	border-radius: 25px;
-	background-color: #ad0404;
+	background-color: #d04848;
 	padding: 10px 60px;
 	margin: 10px 0px;
 	border: 3px solid whitesmoke;
@@ -103,6 +102,14 @@ const Button = styled.div`
 	`
 const H1 = styled.div`
 	font-family: 600;
+	text-decoration-thickness: 40px;
+	font-weight: 400;
 	font-size: 40px;
 	align-self: center;
+	margin-top: 5px;
+	`
+
+const PokeImage = styled.img`
+	background-color: #4872d0;
+	text-align: center;
 	`

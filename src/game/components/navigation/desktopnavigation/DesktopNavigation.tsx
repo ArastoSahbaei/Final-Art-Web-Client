@@ -36,7 +36,8 @@ export const DesktopNavigation = () => {
 	}
 	
 const Button = styled.div`
-	  font-weight: 600;
+	font-weight: 600;
+	font-size: 18px;
     cursor: pointer;
     text-transform: uppercase;
     font-family: ${secondaryFont};
