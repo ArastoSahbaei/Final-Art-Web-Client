@@ -13,7 +13,7 @@ export const DisplayHome = () => {
 			<WrapperBackground />
 			<HomeGrid>
 				<HomeCell column1={'1/4'} column2={'3/4'}>
-					<H1>{'Welcome to PokéCards!'}</H1> 
+					<H1>{'Welcome to PokéCards! The premier cardbattle game on the market.'}</H1> 
 					
 					<ParagraphWrapper>
 						<Button onClick={() => navigate(RoutingPath.playNowView)}>{'Play Now!'} </Button>
@@ -32,7 +32,7 @@ interface x {
 const Wrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(20, 1fr);
-	margin-top: 90px;
+	margin-top: 75px;
 	width: 100%;
 	text-align: center;
 	`
@@ -55,6 +55,14 @@ const HomeGrid = styled.div`
 
 const HomeCell = styled.div<x>`
 		grid-column: ${(props) => props.column1};
+
+		border-radius: 5px;
+		background-color: #5956f0;
+		padding: 5px 15px;
+		margin: 10px 0px;
+		border: 3px solid whitesmoke;
+
+
 		display: grid;
 		align-items: center;
 		max-height: 100%;
@@ -78,7 +86,7 @@ const Button = styled.div`
 	background-color: #ad0404;
 	padding: 10px 60px;
 	margin: 10px 0px;
-	
+	border: 3px solid whitesmoke;
 
 	font-weight: 600;
 	font-size: 40px;
@@ -95,5 +103,6 @@ const Button = styled.div`
 	`
 const H1 = styled.div`
 	font-family: 600;
-	font-size: 50px;
+	font-size: 40px;
+	align-self: center;
 	`
