@@ -1,4 +1,4 @@
-import { DisplayHome } from "./components/DisplayHome"
+import { DisplayHome } from './components/DisplayHome'
 
 export const HomeView = () => {
 	return (
