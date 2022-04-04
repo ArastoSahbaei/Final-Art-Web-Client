@@ -103,6 +103,7 @@ export const GameController = () => {
 		<Wrapper
 			onMouseMove={e => moveCard(e)}
 			onMouseUp={e => dropCardOnTile(e)}>
+			<WrapperBackground />
 			<GameGrid>
 				<PlayerCards>
 					<h3>{'Player 1'}</h3>
@@ -131,18 +132,36 @@ const Wrapper = styled.div`
 	margin-top: calc(100vh/12);
   	width: 1200px;
 	height: 800px;
-	background-color: #e0cfcf;
 `
+const WrapperBackground = styled.div`
+	position: absolute;
+	background-color: #6d6df1dc;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+`
+
 const GameGrid = styled.div`
-	 display: grid;
+	display: grid;
 	grid-template-columns: 1fr 4fr 1fr;
 	width: 1200px;
+	background-color: #e0cfcf;
 `
 
 const TileGame = styled.div`
-	 width:800px;
+	width:800px;
+
+	padding: 5px 5px;
+	margin-top: 2px;
 `
 const PlayerCards = styled.div`
 	width: 200px;
-	text-align: center;`
+	text-align: center;
+
+	border-radius: 5px;
+	padding: 5px 10px;
+	margin: 10px 0px;
+`
 
