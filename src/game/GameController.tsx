@@ -132,6 +132,8 @@ const Wrapper = styled.div`
 	margin-top: calc(100vh/12);
   	width: 1200px;
 	height: 800px;
+
+	padding: 3px;
 `
 const WrapperBackground = styled.div`
 	position: absolute;

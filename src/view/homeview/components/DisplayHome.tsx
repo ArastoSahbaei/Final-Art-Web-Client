@@ -47,7 +47,8 @@ const WrapperBackground = styled.div`
 	`
 
 const HomeGrid = styled.div`
-	margin-left: 790px;
+	
+	margin-left: 75%;
 	width: 500px;
     `
 
@@ -102,9 +103,8 @@ const Button = styled.div`
 	`
 const H1 = styled.div`
 	font-family: 600;
-	text-decoration-thickness: 40px;
 	font-weight: 400;
-	font-size: 40px;
+	font-size: 30px;
 	align-self: center;
 	margin-top: 5px;
 	`
