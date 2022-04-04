@@ -129,11 +129,10 @@ export const GameController = () => {
 
 const Wrapper = styled.div`
 	margin: 0 auto;
-	margin-top: calc(100vh/12);
+	margin-top: 85px;
+	
   	width: 1200px;
 	height: 800px;
-
-	padding: 3px;
 `
 const WrapperBackground = styled.div`
 	position: absolute;
@@ -141,7 +140,7 @@ const WrapperBackground = styled.div`
 	left: 0;
 	top: 0;
 	width: 100%;
-	height: 100%;
+	height: 125%;
 	z-index: -1;
 `
 
@@ -154,16 +153,10 @@ const GameGrid = styled.div`
 
 const TileGame = styled.div`
 	width:800px;
-
-	padding: 5px 5px;
-	margin-top: 2px;
+	
 `
 const PlayerCards = styled.div`
 	width: 200px;
 	text-align: center;
-
-	border-radius: 5px;
-	padding: 5px 10px;
-	margin: 10px 0px;
 `
 
