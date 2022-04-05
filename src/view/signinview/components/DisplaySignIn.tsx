@@ -1,31 +1,44 @@
 import styled from 'styled-components'
 import { useState } from 'react'
-import { primaryBackgroundColor, primaryColor, secondaryColor } from '../../../shared/style/GlobalStyle'
+import RoutingPath from 'routes/RoutingPath'
+import { useNavigate } from 'react-router-dom'
+
 
 export const DisplaySignIn = () => {
-	const [loginView, setLoginView] = useState<boolean>(true)
+	const navigate = useNavigate()
+	const [username, setUsername] = useState('Daniel')
+	const [password, setPassword] = useState('1234')
+
+
+	const handleChange = (event: { target: { username: any; password: any } }) => {
+		const username = event.target.username
+		const password = event.target.password
+
+
+		
+		setInputs(values => ({...values, [username]: password}))
+	}
+
 
 	return (
 		<Wrapper>
+			<WrapperBackground />
 			<MainWrapper>
-				<TitleWrapper>
-					<TitleWrapperItem
-						loginView={loginView}
-						primaryColor={primaryBackgroundColor}
-						secondaryColor={secondaryColor}
-						onClick={() => setLoginView(true)}>
-						<Paragraph>{'Sign In'}</Paragraph>
-					</TitleWrapperItem>
-					<TitleWrapperItem
-						loginView={!loginView}
-						primaryColor={primaryBackgroundColor}
-						secondaryColor={secondaryColor}
-						onClick={() => setLoginView(false)}>
-						<Paragraph>{'Register'}</Paragraph>
-					</TitleWrapperItem>
+				<SignInWrapper>
+					<H1>{'Username: '}</H1> <br />
+					<Input  onChange={event => setUsername(event.target.username)} />
+					<H1>{'Password: '}</H1> <br />
+					<Input type='password'  onChange={event => setPassword(event.target.password)} />
 
 
-				</TitleWrapper>
+					
+			
+				
+					<input type={'submit'} />
+				</SignInWrapper>
+				<RegisterWrapper>
+					<Button onClick={() => navigate(RoutingPath.registerView)}>{'Register here!'} </Button>
+				</RegisterWrapper>
 			</MainWrapper>
 		</Wrapper>
 	)
@@ -33,40 +46,60 @@ export const DisplaySignIn = () => {
 
 const Wrapper = styled.div`
   display: grid;
+  margin: 0 auto;
+  margin-top: 80px;
 `
+const WrapperBackground = styled.div`
+	position: absolute;
+	background-color: #6d6df1dc;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+`
+
 
 const MainWrapper = styled.div`
     display: grid;
+	grid-template-columns: 1 ;
+
+
 `
 
-export const TitleWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  text-align: center;
-  background-color: ${secondaryColor};
-  border-top-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
+const SignInWrapper = styled.div`
+	display: grid;
 `
 
-interface values {
-	loginView: boolean;
-	primaryColor: string;
-	secondaryColor: string;
-}
 
-export const TitleWrapperItem = styled.div<values>`
-  background-color: ${props => props.loginView ? props.primaryColor : props.secondaryColor};
-  border-top-left-radius: ${props => props.loginView ? '0.5em' : '0.5em'};
-  border-top-right-radius: ${props => props.loginView ? '0.5em' : '0.5em'};
-  &:hover {
-    background-color: ${primaryColor};
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
-  }
+const RegisterWrapper = styled.div`
+	display: grid;
 `
 
-const Paragraph = styled.p`
-  font-size: 1.25em;
-  cursor: pointer;
-  margin-bottom: 0.25em;
+const Button = styled.div`
+	border-radius: 25px;
+	background-color: #d04848;
+	padding: 10px 60px;
+	margin: 10px 0px;
+	border: 3px solid whitesmoke;
+	font-weight: 600;
+	font-size: 40px;
+	width: 100%;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #020202;
+    align-self: center;
+	text-align: center;
+`
+const H1 = styled.div`
+	font-family: 600;
+	font-weight: 400;
+	font-size: 30px;
+	align-self: center;
+	margin-top: 5px;
+	text-align: center;
+`
+const Input = styled.div`
+	
 `

@@ -8,8 +8,6 @@ export const SignInView = () => {
 
 
 	return (
-		<div>
-			<DisplaySignIn />
-		</div>
+		<DisplaySignIn />
 	)
 }

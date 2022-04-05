@@ -1,4 +1,3 @@
-import { GameController } from 'game/GameController'
 import { GlobalStyle } from './shared/style/GlobalStyle'
 import { DesktopNavigation } from './game/components/navigation/desktopnavigation/DesktopNavigation'
 
@@ -12,7 +11,6 @@ export const Application = () => {
 				<DesktopNavigation />	
 			</Routing>
 			
-			<GameController />
 		</>
 	)
 }
