@@ -1,9 +1,7 @@
-
+import { DisplayRegister } from '../registerview/components/DisplayRegister'
 
 export const RegisterView = () => {
 	return (
-		<div>
-			<h1>{'Welcome to the HomeView'}</h1>
-		</div>
+		<DisplayRegister />
 	)
 }
