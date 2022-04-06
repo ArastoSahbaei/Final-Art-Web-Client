@@ -9,16 +9,12 @@ export const DisplaySignIn = () => {
 	const [username, setUsername] = useState('Daniel')
 	const [password, setPassword] = useState('1234')
 
-
 	const handleChange = (event: { target: { username: any; password: any } }) => {
 		const username = event.target.username
 		const password = event.target.password
 
-
-		
-		setInputs(values => ({...values, [username]: password}))
+		setInputs((values: any) => ({...values, [username]: password}))
 	}
-
 
 	return (
 		<Wrapper>
@@ -103,3 +99,7 @@ const H1 = styled.div`
 const Input = styled.div`
 	
 `
+
+function setInputs(arg0: (values: any) => any) {
+	throw new Error('Function not implemented.')
+}
