@@ -44,7 +44,7 @@ const WrapperBackground = styled.div`
 
 const HomeGrid = styled.div`
 	display: grid;
-	margin-left: 26%;
+
 
 	align-self: center;
 	width: 1000px;

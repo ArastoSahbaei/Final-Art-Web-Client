@@ -1,9 +1,22 @@
+import styled from 'styled-components'
 import { DisplayHome } from './components/DisplayHome'
 
 export const HomeView = () => {
 	return (
-		<div>
+		<Div>
+			
 			<DisplayHome />
-		</div>
+		</Div>
 	)
 }
+
+
+const Div = styled.div`
+	display: grid;
+	align-content: center;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+`
+
+
