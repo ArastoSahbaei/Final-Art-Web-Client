@@ -46,8 +46,11 @@ const WrapperBackground = styled.div`
 `
 
 const RegisterWrapper = styled.div`
-  display: grid;
-
+    display: grid;
+    background-color: #4872d0;
+    width: 60%;
+	height: 100;
+	justify-self: center;
 `
 
 const H1 = styled.div`

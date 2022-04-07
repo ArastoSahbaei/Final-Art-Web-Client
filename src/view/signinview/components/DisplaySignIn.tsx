@@ -90,14 +90,18 @@ const Button = styled.div`
 	text-align: center;
 `
 const H1 = styled.div`
-	font-family: 600;
+	
 	font-weight: 400;
 	font-size: 30px;
 	align-self: center;
-	margin-top: 5px;
+	margin-top: 10px;
 	text-align: center;
+
+	justify-self: center;
 `
 const Input = styled.input`
+	width: 40%;
+	justify-self: center;
 	
 `
 
