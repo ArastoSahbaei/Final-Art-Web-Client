@@ -22,8 +22,9 @@ export const DisplayRegister = () => {
 				<Input  onChange={event => setEmail(event.target.email)} />
 
 
-				<Input type={'submit'} />
+				
 			</RegisterWrapper>
+			<Input type={'submit'} />
 		</Wrapper>
 )
 }
