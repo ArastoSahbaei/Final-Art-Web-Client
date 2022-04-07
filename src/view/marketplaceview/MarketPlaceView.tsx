@@ -1,3 +1,8 @@
+import { DisplayMarketplace } from './components/DisplayMarketplace'
+
 export const MarketPlaceView = () => {
-	return <h1>{'marketplace'}</h1>
+	return (	
+		<DisplayMarketplace />
+		
+	)
 }
