@@ -9,12 +9,6 @@ export const DisplaySignIn = () => {
 	const [username, setUsername] = useState('Daniel')
 	const [password, setPassword] = useState('1234')
 
-	const handleChange = (event: { target: { username: any; password: any } }) => {
-		const username = event.target.username
-		const password = event.target.password
-
-		setInputs((values: any) => ({...values, [username]: password}))
-	}
 
 	return (
 		<Wrapper>
@@ -22,15 +16,16 @@ export const DisplaySignIn = () => {
 			<MainWrapper>
 				<SignInWrapper>
 					<H1>{'Username: '}</H1> <br />
-					<Input  onChange={event => setUsername(event.target.username)} />
+					<Input  onChange={event => setUsername(event.target.value)} />
 					<H1>{'Password: '}</H1> <br />
-					<Input type='password'  onChange={event => setPassword(event.target.password)} />
+					<Input type='password'  onChange={event => setPassword(event.target.value)} />
 
 
 					
 			
 				
-					<input type={'submit'} />
+					<Button onClick={() => alert('Ok!')} >{'Enter'}</Button>
+
 				</SignInWrapper>
 				<RegisterWrapper>
 					<Button onClick={() => navigate(RoutingPath.registerView)}>{'Register here!'} </Button>
@@ -44,6 +39,7 @@ const Wrapper = styled.div`
   display: grid;
   margin: 0 auto;
   margin-top: 80px;
+ 
 `
 const WrapperBackground = styled.div`
 	position: absolute;
@@ -58,9 +54,14 @@ const WrapperBackground = styled.div`
 
 const MainWrapper = styled.div`
     display: grid;
-	grid-template-columns: 1 ;
-
-
+	
+	color: black;
+	border-color: white;
+	border-radius: 10px;
+	background-color: #4872d0;
+	width: 60%;
+	height: 100;
+	justify-self: center;
 `
 
 const SignInWrapper = styled.div`
@@ -96,10 +97,8 @@ const H1 = styled.div`
 	margin-top: 5px;
 	text-align: center;
 `
-const Input = styled.div`
+const Input = styled.input`
 	
 `
 
-function setInputs(arg0: (values: any) => any) {
-	throw new Error('Function not implemented.')
-}
+

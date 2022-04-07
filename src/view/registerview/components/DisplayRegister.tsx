@@ -15,11 +15,11 @@ export const DisplayRegister = () => {
 			<WrapperBackground />
 			<RegisterWrapper>
 				<H1>{'Username: '}</H1> <br />
-				<Input  onChange={event => setUsername(event.target.username)} />
+				<Input  onChange={event => setUsername(event.target.value)} />
 				<H1>{'Password: '}</H1> <br />
-				<Input type='password'  onChange={event => setPassword(event.target.password)} />
+				<Input type='password'  onChange={event => setPassword(event.target.value)} />
 				<H1>{'Email: '}</H1> <br />
-				<Input  onChange={event => setEmail(event.target.email)} />
+				<Input  onChange={event => setEmail(event.target.value)} />
 
 
 				
@@ -59,6 +59,6 @@ const H1 = styled.div`
 	text-align: center;
 `
 
-const Input = styled.div`
+const Input = styled.input`
 	
 `
