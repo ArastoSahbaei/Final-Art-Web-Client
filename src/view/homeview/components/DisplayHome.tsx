@@ -30,6 +30,8 @@ const Wrapper = styled.div`
 	margin-top: 75px;
 	width: 100%;
 	text-align: center;
+
+	align-content: center;
 	`
 
 const WrapperBackground = styled.div`
@@ -47,7 +49,7 @@ const HomeGrid = styled.div`
 
 
 	align-self: center;
-	width: 1000px;
+	width: 80%;
     `
 
 const HomeCell = styled.div`
