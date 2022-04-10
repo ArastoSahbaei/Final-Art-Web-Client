@@ -96,7 +96,7 @@ const MarketplaceWrapper = styled.div`
 
 padding: 10px 60px;
 margin: 15px 0px;
-border: 3px solid black;
+border: 3px solid whitesmoke;
 
 margin: 0 auto;
 
