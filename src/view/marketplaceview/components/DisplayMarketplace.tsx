@@ -76,7 +76,7 @@ const WrapperBackground = styled.div`
 	left: 0;
 	top: 0;
 	width: 100%;
-	height: 100%;
+	height: 200%;
 	z-index: -1;
 	`
 
@@ -111,6 +111,8 @@ const StoreitemWrapper = styled.div`
 	align-self: center;
 
 	justify-content: center;
+
+	margin: 5px;
 	
 `
 
@@ -156,7 +158,7 @@ const H1 = styled.div`
 const H2 = styled.div`
     font-family: 600;
 	font-weight: 400;
-	font-size: 35px;
+	font-size: 30px;
 	align-self: center;
 
 `
