@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import testPic from '../../../shared/images/Beartic.png'
 import RoutingPath from '../../../routes/RoutingPath'
 
+
 export const DisplayMarketplace = () => {
 	const navigate = useNavigate()
 
@@ -11,11 +12,11 @@ export const DisplayMarketplace = () => {
 			<WrapperBackground />
 			<MarketplaceWrapper>
 				<StoreitemWrapper>
-					<H1>{'Welcome to the Store where we sell your favorite Pokécards!'}</H1> 
+					<H1>{'Welcome to the Store where you can bu your favorite Pokécards!'}</H1> 
 				
 					<CurrencyWrapper>
-						<H1>{'PokéPoint: '}</H1>
-						<H1>{'2500P '}</H1>
+						<H3>{'PokéPoint: '}</H3>
+						<H3>{'2500P '}</H3>
 					</CurrencyWrapper>
 				
 					<PokeWrapper>
@@ -34,12 +35,14 @@ export const DisplayMarketplace = () => {
 }
 
 const Wrapper = styled.div`
-    margin-top: 80px;
+    
 	width: 100%;
 	text-align: center;
 
 	align-content: center;
 	justify-content: center;
+	align-items: center;
+	justify-self: center;
 `
 
 const WrapperBackground = styled.div`
@@ -62,12 +65,23 @@ const MarketplaceWrapper = styled.div`
 	text-align: center;
 	align-self: center;
 
-	
+	justify-content: center;
+
+	border-radius: 25px;
+
+padding: 10px 60px;
+margin: 15px 0px;
+border: 3px solid black;
 `
 
 const StoreitemWrapper = styled.div`
     display: grid;
 
+	align-items: center;
+	text-align: center;
+	align-self: center;
+
+	justify-content: center;
 	
 `
 
@@ -105,7 +119,7 @@ text-align: center;
 const H1 = styled.div`
 	font-family: 600;
 	font-weight: 400;
-	font-size: 40px;
+	font-size: 50px;
 	align-self: center;
 	margin-top: 5px;
 	`
@@ -116,6 +130,14 @@ const H2 = styled.div`
 	font-size: 45px;
 	align-self: center;
 
+`
+
+const H3 = styled.div`
+	font-family: 600;
+	font-weight: 400;
+	font-size: 40px;
+	align-self: center;
+	margin-top: 5px;
 `
 
 const PokeWrapper = styled.div`
