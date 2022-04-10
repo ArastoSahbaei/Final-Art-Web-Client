@@ -1,7 +1,5 @@
-import { GameController } from 'game/GameController'
 import { GlobalStyle } from './shared/style/GlobalStyle'
 import { DesktopNavigation } from './game/components/navigation/desktopnavigation/DesktopNavigation'
-
 import { Routing } from './routes/Routes'
 
 export const Application = () => {
@@ -11,8 +9,6 @@ export const Application = () => {
 			<Routing>
 				<DesktopNavigation />	
 			</Routing>
-			
-			<GameController />
 		</>
 	)
 }
