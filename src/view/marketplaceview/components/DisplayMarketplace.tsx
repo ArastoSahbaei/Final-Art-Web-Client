@@ -1,11 +1,11 @@
-import { useNavigate } from 'react-router-dom'
+
 import styled from 'styled-components'
 import testPic from '../../../shared/images/Beartic.png'
-import RoutingPath from '../../../routes/RoutingPath'
+
 
 
 export const DisplayMarketplace = () => {
-	const navigate = useNavigate()
+	
 
 	return (
 		<Wrapper>
@@ -23,7 +23,7 @@ export const DisplayMarketplace = () => {
 						<H2>{'Beartic'}</H2>
 						<PokeImage src={testPic} alt='Error...' />
 						<H2>{'Price: 800P'}</H2>
-						<Button onClick={() => navigate(RoutingPath.playNowView)}>{'Buy Now!'} </Button>
+						<Button onClick={() => alert('You bought a Beartic!')} >{'Buy!'}</Button>
 						
 					</PokeWrapper>
 				</StoreitemWrapper>
@@ -35,7 +35,7 @@ export const DisplayMarketplace = () => {
 }
 
 const Wrapper = styled.div`
-    
+    display: grid;
 	width: 100%;
 	text-align: center;
 
