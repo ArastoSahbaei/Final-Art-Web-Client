@@ -3,11 +3,6 @@ import { DisplayLogOff } from '../logoffView/components/DisplayLogOff'
 
 export const LogOffView = () => {
 
-
-
-
-
-
 	return (
 		<Div>
 			<DisplayLogOff />
