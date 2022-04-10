@@ -1,7 +1,9 @@
 
 import styled from 'styled-components'
-import testPic from '../../../shared/images/Beartic.png'
-
+import BearticPic from '../../../shared/images/Beartic.png'
+import OnixPic from '../../../shared/images/Onix.png'
+import GengarPic from '../../../shared/images/Gengar.png'
+import BulbasaurPic from '../../../shared/images/Oddish.png'
 
 
 export const DisplayMarketplace = () => {
@@ -21,9 +23,30 @@ export const DisplayMarketplace = () => {
 				
 					<PokeWrapper>
 						<H2>{'Beartic'}</H2>
-						<PokeImage src={testPic} alt='Error...' />
+						<PokeImage src={BearticPic} alt='Error...' />
 						<H2>{'Price: 800P'}</H2>
-						<Button onClick={() => alert('You bought a Beartic!')} >{'Buy!'}</Button>
+						<Button onClick={() => alert('Purchased!')} >{'Buy!'}</Button>
+						
+					</PokeWrapper>
+					<PokeWrapper>
+						<H2>{'Bulbasaur'}</H2>
+						<PokeImage src={BulbasaurPic} alt='Error...' />
+						<H2>{'Price: 1000P'}</H2>
+						<Button onClick={() => alert('Purchased!')} >{'Buy!'}</Button>
+						
+					</PokeWrapper>
+					<PokeWrapper>
+						<H2>{'Gengar'}</H2>
+						<PokeImage src={GengarPic} alt='Error...' />
+						<H2>{'Price: 2000P'}</H2>
+						<Button onClick={() => alert('Purchased!')} >{'Buy!'}</Button>
+						
+					</PokeWrapper>
+					<PokeWrapper>
+						<H2>{'Onix'}</H2>
+						<PokeImage src={OnixPic} alt='Error...' />
+						<H2>{'Price: 1500P'}</H2>
+						<Button onClick={() => alert('Purchased!')} >{'Buy!'}</Button>
 						
 					</PokeWrapper>
 				</StoreitemWrapper>
@@ -43,6 +66,8 @@ const Wrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	justify-self: center;
+	
+
 `
 
 const WrapperBackground = styled.div`
@@ -72,6 +97,10 @@ const MarketplaceWrapper = styled.div`
 padding: 10px 60px;
 margin: 15px 0px;
 border: 3px solid black;
+
+margin: 0 auto;
+
+margin-top: 700px;
 `
 
 const StoreitemWrapper = styled.div`
@@ -89,7 +118,7 @@ const PokeImage = styled.img`
 	background-color: #4872d0;
 	text-align: center;
 
-
+	
 	`
 
 const Button = styled.div`
@@ -100,9 +129,8 @@ margin: 15px 0px;
 border: 3px solid whitesmoke;
 
 font-weight: 600;
-font-size: 40px;
-width: 80%;
-height: 80%;
+font-size: 30px;
+
 cursor: pointer;
 text-transform: uppercase;
 
@@ -112,6 +140,7 @@ align-self: center;
 
 
 text-align: center;
+justify-items: center;
 
 
 `
@@ -127,7 +156,7 @@ const H1 = styled.div`
 const H2 = styled.div`
     font-family: 600;
 	font-weight: 400;
-	font-size: 45px;
+	font-size: 35px;
 	align-self: center;
 
 `
@@ -150,9 +179,11 @@ const PokeWrapper = styled.div`
 
 	justify-self: center;
 
-	background-color: brown;
+	background-color: #fdf5f57a;
 
-	padding: 10px 60px;
+
+
+
 
 	border: 3px solid whitesmoke;
 `
