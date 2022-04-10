@@ -28,7 +28,7 @@ export const DisplaySignIn = () => {
 
 				</SignInWrapper>
 				<RegisterWrapper>
-					<Button onClick={() => navigate(RoutingPath.registerView)}>{'Register here!'} </Button>
+					<Button2 onClick={() => navigate(RoutingPath.registerView)}>{'Register here!'} </Button2>
 				</RegisterWrapper>
 			</MainWrapper>
 		</Wrapper>
@@ -38,7 +38,7 @@ export const DisplaySignIn = () => {
 const Wrapper = styled.div`
   display: grid;
   margin: 0 auto;
-  margin-top: 80px;
+	width: 100%;
  
 `
 const WrapperBackground = styled.div`
@@ -54,18 +54,25 @@ const WrapperBackground = styled.div`
 
 const MainWrapper = styled.div`
     display: grid;
+
 	
 	color: black;
-	border-color: white;
-	border-radius: 10px;
+
 	background-color: #4872d0;
-	width: 60%;
+	
 	height: 100;
 	justify-self: center;
+
+	border-radius: 5px;
+	
+		padding: 5px 15px;
+		margin: 10px 0px;
+		border: 3px solid whitesmoke;
 `
 
 const SignInWrapper = styled.div`
 	display: grid;
+	width: 100%;
 `
 
 
@@ -74,6 +81,26 @@ const RegisterWrapper = styled.div`
 `
 
 const Button = styled.div`
+	border-radius: 25px;
+	background-color: #5fe616c7;
+	padding: 10px 60px;
+	margin: 10px 0px;
+	border: 3px solid whitesmoke;
+	font-weight: 600;
+	font-size: 40px;
+	width: 100%;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #020202;
+    align-self: center;
+	text-align: center;
+
+	width: 80%;
+	justify-self: center;
+`
+
+const Button2 = styled.div`
 	border-radius: 25px;
 	background-color: #d04848;
 	padding: 10px 60px;
@@ -88,11 +115,18 @@ const Button = styled.div`
     color: #020202;
     align-self: center;
 	text-align: center;
+
+	width: 80%;
+	justify-self: center;
 `
+
+
+
+
 const H1 = styled.div`
 	
 	font-weight: 400;
-	font-size: 30px;
+	font-size: 40px;
 	align-self: center;
 	margin-top: 10px;
 	text-align: center;
