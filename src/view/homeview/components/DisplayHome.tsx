@@ -26,7 +26,7 @@ export const DisplayHome = () => {
 
 const Wrapper = styled.div`
 	margin: 0 auto;
-	margin-top: 75px;
+
 	width: 100%;
 	text-align: center;
 
