@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import { useNavigate   } from 'react-router-dom'
-import { primaryColor, secondaryFont } from 'shared/style/GlobalStyle'
 import testPic from '../../../shared/images/Beartic.png'
 
 export const DisplayHome = () => {
@@ -83,13 +82,10 @@ const Button = styled.div`
 	width: 100%;
     cursor: pointer;
     text-transform: uppercase;
-    font-family: ${secondaryFont};
     text-decoration: none;
     color: #020202;
     align-self: center;
-    &.is-active {
-      color: ${primaryColor};
-    }
+   
 	`
 const H1 = styled.div`
 	font-family: 600;
