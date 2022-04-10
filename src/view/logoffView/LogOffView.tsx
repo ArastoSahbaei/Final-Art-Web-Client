@@ -1,10 +1,16 @@
 import styled from 'styled-components'
-import { DisplayRegister } from '../registerview/components/DisplayRegister'
+import { DisplayLogOff } from '../logoffView/components/DisplayLogOff'
 
-export const RegisterView = () => {
+export const LogOffView = () => {
+
+
+
+
+
+
 	return (
 		<Div>
-			<DisplayRegister />
+			<DisplayLogOff />
 		</Div>
 	)
 }

@@ -4,6 +4,7 @@ import { MarketPlaceView } from '../view/marketplaceview/MarketPlaceView'
 import { PlayNowView } from '../view/playnowview/PlayNowView'
 import { SignInView } from '../view/signinview/SignInView'
 import { RegisterView } from '../view/registerview/RegisterView'
+import { LogOffView } from 'view/logoffView/LogOffView'
 import RoutingPath from './RoutingPath'
 
 export const Routing = (props: { children: React.ReactChild }) => {
@@ -16,6 +17,7 @@ export const Routing = (props: { children: React.ReactChild }) => {
 				<Route path={RoutingPath.playNowView} element={<PlayNowView/>} />
 				<Route path={RoutingPath.signInView} element={<SignInView/>} />
 				<Route path={RoutingPath.registerView} element={<RegisterView/>} />
+				<Route path={RoutingPath.logoffView} element={<LogOffView/>} />
 			</Routes>  
 		</Router>
 	)

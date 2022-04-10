@@ -3,30 +3,19 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 
-export const DisplayRegister = () => {
-	const navigate = useNavigate()
-	const [username, setUsername] = useState('')
-	const [password, setPassword] = useState('')
-	const [email, setEmail] = useState('')
+export const DisplayLogOff = () => {
+
 
 
 	return (
 		<Wrapper>
 			<WrapperBackground />
-			<RegisterWrapper>
-				<H1>{'Username: '}</H1> 
-				<Input  onChange={event => setUsername(event.target.value)} />
-				<H1>{'Password: '}</H1> 
-				<Input type='password'  onChange={event => setPassword(event.target.value)} />
-				<H1>{'Email: '}</H1> 
-				<Input  onChange={event => setEmail(event.target.value)} />
-
-
+			<LogoffWrapper>
+				<H1>{'Do you want to log off? '}</H1> <br />
 				<Input type={'submit'} />
-			</RegisterWrapper>
-			
+			</LogoffWrapper>
 		</Wrapper>
-)
+	)
 }
 
 const Wrapper = styled.div`
@@ -51,18 +40,15 @@ const WrapperBackground = styled.div`
 	height: 100%;
 	z-index: -1;
 `
-
-const RegisterWrapper = styled.div`
+const LogoffWrapper = styled.div`
     display: grid;
     
 
 
 	justify-self: center;
 
-	margin: 5px;
-	justify-content: space-between;
-	grid-template-rows: 1fr 1fr 1fr 1fr;
 `
+
 
 const H1 = styled.div`
 	font-family: 600;
@@ -71,12 +57,9 @@ const H1 = styled.div`
 	align-self: center;
 	margin-top: 5px;
 	text-align: center;
-
-	margin-bottom: 3px;
 `
 
 const Input = styled.input`
 	justify-self: center;
-	
 	
 `

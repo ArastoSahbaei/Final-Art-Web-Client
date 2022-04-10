@@ -60,7 +60,7 @@ const MainWrapper = styled.div`
 
 	background-color: #4872d0;
 	
-	height: 100;
+
 	justify-self: center;
 
 	border-radius: 5px;

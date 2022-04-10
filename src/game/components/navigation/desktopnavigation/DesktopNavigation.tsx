@@ -19,12 +19,9 @@ export const DesktopNavigation = () => {
 						<Button onClick={() => navigate(RoutingPath.homeView)}>{'Home'}</Button>
 						<Button onClick={() => navigate(RoutingPath.marketPlaceView)}>{'Marketplace'}</Button>
 						<Button onClick={() => navigate(RoutingPath.playNowView)}>{'Play Now!'} </Button>
-					</ParagraphWrapper>	
-				</GridCell>
-				<GridCell>
-					<ParagraphWrapper>
 						<Button onClick={() => navigate(RoutingPath.signInView)}>{'Sign In!'} </Button>
-					</ParagraphWrapper>
+						<Button onClick={() => navigate(RoutingPath.logoffView)}>{'Log Off'} </Button>
+					</ParagraphWrapper>	
 				</GridCell>
 			</Grid>
 		</Wrapper>
