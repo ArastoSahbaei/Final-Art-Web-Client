@@ -2,13 +2,43 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import RoutingPath from 'routes/RoutingPath'
 import { useNavigate } from 'react-router-dom'
+// import { useAuthentication } from 'hooks/useAuthentication'
+// import { LoginCredentials } from 'shared/interfaces/UserInterface'
 
 
 export const DisplaySignIn = () => {
 	const navigate = useNavigate()
-	const [username, setUsername] = useState('Daniel')
-	const [password, setPassword] = useState('1234')
+	const [username, setUsername] = useState('') // Daniel
+	const [password, setPassword] = useState('') // 1234
 
+	/*
+	const { login } = useAuthentication()
+	const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({ username: '', password: '' })
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>, target: keyof LoginCredentials) => {
+		setLoginCredentials({ ...loginCredentials, [target]: event.target.value })
+	}
+
+	const onSubmit = async (event: React.MouseEvent<HTMLElement>) => {
+		event.preventDefault()
+		login(loginCredentials)
+	}
+	*/
+
+
+	// <H1>{'Username: '}</H1> <br />
+	//	<Input  onChange={event => setUsername(event.target.value)} />
+	//	<H1>{'Password: '}</H1> <br />
+	//	<Input type='password'  onChange={event => setPassword(event.target.value)} /> 
+
+
+
+	// <H1>{'Username: '}</H1> <br />
+	// <Input  onChange={(event) => { handleChange(event, 'username') }} />
+	//	<H1>{'Password: '}</H1> <br />
+	//	<Input type='password'  onChange={(event) => { handleChange(event, 'password') }} /> 
+
+	// <Button onClick={(event) => { onSubmit(event) }} >{'Enter'}</Button>
 
 	return (
 		<Wrapper>
@@ -18,7 +48,7 @@ export const DisplaySignIn = () => {
 					<H1>{'Username: '}</H1> <br />
 					<Input  onChange={event => setUsername(event.target.value)} />
 					<H1>{'Password: '}</H1> <br />
-					<Input type='password'  onChange={event => setPassword(event.target.value)} />
+					<Input type='password'  onChange={event => setPassword(event.target.value)} /> 
 
 
 					

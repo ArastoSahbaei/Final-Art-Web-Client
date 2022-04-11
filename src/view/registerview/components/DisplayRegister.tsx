@@ -1,20 +1,45 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-
+import { useAuthentication } from '../../../hooks/useAuthentication'
+import {RegisterNewUser } from '../../../shared/interfaces/UserInterface'
 
 export const DisplayRegister = () => {
-	const navigate = useNavigate()
+
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 	const [email, setEmail] = useState('')
+
+
+	/*
+	const { registerNewUser } = useAuthentication()
+	const [registerUser, setRegisterUser] = useState<RegisterNewUser>({ username: '', password: '', email: '', receiveNewsLetters: true })
+
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>, target: keyof RegisterNewUser) => {
+		setRegisterUser({ ...registerUser, [target]: event.target.value })
+	}
+
+	const onSubmit = (event: React.MouseEvent<HTMLElement>) => {
+		event.preventDefault()
+		registerNewUser(registerUser)
+	}
+	*/
+
+	// <H1>{'Username: '}</H1> 
+	// <Input  onChange={(event) => { handleChange(event, 'username') }} />
+	// <H1>{'Password: '}</H1> 
+	// <Input type='password' onChange={(event) => { handleChange(event, 'password') }} />
+	// <H1>{'Email: '}</H1> 
+	// <Input  onChange={(event) => { handleChange(event, 'email') }} />
+
+	//<Button onClick={(event) => { onSubmit(event) }}>{'Register'}</Button>
 
 
 	return (
 		<Wrapper>
 			<WrapperBackground />
 			<RegisterWrapper>
-				<H1>{'Username: '}</H1> 
+			<H1>{'Username: '}</H1> 
 				<Input  onChange={event => setUsername(event.target.value)} />
 				<H1>{'Password: '}</H1> 
 				<Input type='password'  onChange={event => setPassword(event.target.value)} />
@@ -22,11 +47,11 @@ export const DisplayRegister = () => {
 				<Input  onChange={event => setEmail(event.target.value)} />
 
 
-				<Input type={'submit'} />
+				<Button onClick={() => alert('Registered!')}>{'Register'}</Button>
 			</RegisterWrapper>
 			
 		</Wrapper>
-)
+	)
 }
 
 const Wrapper = styled.div`
@@ -79,4 +104,27 @@ const Input = styled.input`
 	justify-self: center;
 	
 	
+`
+
+const Button = styled.div`
+	border-radius: 25px;
+	background-color: #5fe616c7;
+	padding: 10px 10px;
+
+	border: 3px solid whitesmoke;
+	font-weight: 400;
+	font-size: 25px;
+	width: 150%;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #020202;
+    align-self: center;
+	text-align: center;
+
+	width: 80%;
+	justify-self: center;
+	justify-content: center;
+
+	margin-top: 5px;
 `
