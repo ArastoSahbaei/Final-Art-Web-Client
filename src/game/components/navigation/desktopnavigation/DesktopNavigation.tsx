@@ -14,7 +14,7 @@ export const DesktopNavigation = () => {
 		<Wrapper scrollPosition={scrollPosition}>
 			<WrapperBackground />
 			<Grid>
-				<GridCell column1={'3/6'} column2={'3/8'} column3={'3/10'}>
+				<GridCell column1={'3/10'} column2={'3/10'} column3={'3/10'} column4={'3/10'} column5={'3/10'}>
 					<ParagraphWrapper>
 						<Button onClick={() => navigate(RoutingPath.homeView)}>{'Home'}</Button>
 						<Button onClick={() => navigate(RoutingPath.marketPlaceView)}>{'Marketplace'}</Button>
@@ -31,6 +31,8 @@ export const DesktopNavigation = () => {
 		column1?: string | '',
 		column2?: string | ''
 		column3?: string | ''
+		column4?: string | ''
+		column5?: string | ''
 	}
 	
 	interface position {
@@ -64,14 +66,20 @@ const GridCell = styled.div<x>`
 		max-height: 100%;
 		position: relative;
 		height: 100%;
-		@media(max-width: 1750px) {
+		@media(max-width: 1400px) {
 			grid-column: ${(props) => props.column2};
 		}
-		@media(max-width: 1750px) {
+		@media(max-width: 1400px) {
 			grid-column: ${(props) => props.column2};
 		}
 		@media(max-width: 1400px) {
 			grid-column: ${(props) => props.column3};
+		}
+		@media(max-width: 1400px) {
+			grid-column: ${(props) => props.column4};
+		}
+		@media(max-width: 1400px) {
+			grid-column: ${(props) => props.column5};
 		}
 	`
 	
