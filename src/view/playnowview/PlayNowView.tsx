@@ -1,3 +1,7 @@
+import { GameController } from 'game/GameController'
+
 export const PlayNowView = () => {
-	return <h1>{'lol'}</h1>
+	return (
+		<GameController />
+	)
 }

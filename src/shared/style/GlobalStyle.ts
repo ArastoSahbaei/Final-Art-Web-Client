@@ -35,3 +35,9 @@ export const GlobalStyle = createGlobalStyle`
 
 export const primaryColor = '#f59300'
 export const secondaryFont = 'AlegreyaSans'
+
+// SignInView
+
+export const primaryBackgroundColor = '#263746'
+export const secondaryColor = '#585d72'
+
