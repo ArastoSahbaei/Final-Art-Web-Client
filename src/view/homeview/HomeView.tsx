@@ -4,7 +4,6 @@ import { DisplayHome } from './components/DisplayHome'
 export const HomeView = () => {
 	return (
 		<Div>
-			
 			<DisplayHome />
 		</Div>
 	)

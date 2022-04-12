@@ -106,7 +106,7 @@ export const GameController = () => {
 			<WrapperBackground />
 			<GameGrid>
 				<PlayerCards>
-					<h3>{'Player 1'}</h3>
+					<H3>{'Player 1'}</H3>
 					<br />
 					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player1'} deckOfCards={deckOfCards} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 				</PlayerCards>
@@ -117,7 +117,7 @@ export const GameController = () => {
 				</TileGame>
 
 				<PlayerCards>
-					<h3>{'Player 2'}</h3>
+					<H3>{'Player 2'}</H3>
 					<br />
 					<DisplayPlayerDeck playerTurn={determinePlayerTurn()} player={'player2'} deckOfCards={deckOfCards2} setCardBeingPlayed={setCardBeingPlayed} activeCard={activeCard} playBoard={boardRef} />
 				</PlayerCards>
@@ -129,7 +129,7 @@ export const GameController = () => {
 
 const Wrapper = styled.div`
 	margin: 0 auto;
-	margin-top: 85px;
+	margin-top: 100px;
 	
   	width: 1200px;
 	height: 800px;
@@ -149,14 +149,22 @@ const GameGrid = styled.div`
 	grid-template-columns: 1fr 4fr 1fr;
 	width: 1200px;
 	background-color: #e0cfcf;
+	border: 3px solid whitesmoke;
 `
 
 const TileGame = styled.div`
 	width:800px;
-	
+	margin-top: 10px;
 `
 const PlayerCards = styled.div`
 	width: 200px;
 	text-align: center;
 `
 
+const H3 = styled.div`
+	font-family: 600;
+	font-weight: 500;
+	font-size: 40px;
+	align-self: center;
+	margin-top: 5px;
+`

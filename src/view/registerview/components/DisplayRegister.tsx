@@ -34,34 +34,28 @@ export const DisplayRegister = () => {
 
 	//<Button onClick={(event) => { onSubmit(event) }}>{'Register'}</Button>
 
-
 	return (
 		<Wrapper>
 			<WrapperBackground />
 			<RegisterWrapper>
-			<H1>{'Username: '}</H1> 
+				<H1>{'Username: '}</H1> 
 				<Input  onChange={event => setUsername(event.target.value)} />
 				<H1>{'Password: '}</H1> 
 				<Input type='password'  onChange={event => setPassword(event.target.value)} />
 				<H1>{'Email: '}</H1> 
 				<Input  onChange={event => setEmail(event.target.value)} />
-
-
 				<Button onClick={() => alert('Registered!')}>{'Register'}</Button>
 			</RegisterWrapper>
-			
 		</Wrapper>
 	)
 }
 
 const Wrapper = styled.div`
-  display: grid;
-  margin: 0 auto;
-  width: 100%;
-  background-color: #4872d0;
-
-  border-radius: 5px;
-	
+  	display: grid;
+  	margin: 0 auto;
+  	width: 100%;
+  	background-color: #4872d0;
+  	border-radius: 5px;
 	padding: 5px 15px;
 	margin: 10px 0px;
 	border: 3px solid whitesmoke;
@@ -79,11 +73,7 @@ const WrapperBackground = styled.div`
 
 const RegisterWrapper = styled.div`
     display: grid;
-    
-
-
 	justify-self: center;
-
 	margin: 5px;
 	justify-content: space-between;
 	grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -96,21 +86,17 @@ const H1 = styled.div`
 	align-self: center;
 	margin-top: 5px;
 	text-align: center;
-
 	margin-bottom: 3px;
 `
 
 const Input = styled.input`
 	justify-self: center;
-	
-	
 `
 
 const Button = styled.div`
 	border-radius: 25px;
 	background-color: #5fe616c7;
 	padding: 10px 10px;
-
 	border: 3px solid whitesmoke;
 	font-weight: 400;
 	font-size: 25px;
@@ -121,10 +107,8 @@ const Button = styled.div`
     color: #020202;
     align-self: center;
 	text-align: center;
-
 	width: 80%;
 	justify-self: center;
 	justify-content: center;
-
 	margin-top: 5px;
 `

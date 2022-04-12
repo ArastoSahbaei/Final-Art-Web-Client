@@ -1,9 +1,6 @@
 import styled from 'styled-components'
 
-
 export const DisplayLogOff = () => {
-
-
 
 	return (
 		<Wrapper>
@@ -17,13 +14,11 @@ export const DisplayLogOff = () => {
 }
 
 const Wrapper = styled.div`
-  display: grid;
-  margin: 0 auto;
-  width: 100%;
-  background-color: #4872d0;
-
-  border-radius: 5px;
-	
+  	display: grid;
+  	margin: 0 auto;
+  	width: 100%;
+  	background-color: #4872d0;
+  	border-radius: 5px;
 	padding: 5px 15px;
 	margin: 10px 0px;
 	border: 3px solid whitesmoke;
@@ -40,11 +35,7 @@ const WrapperBackground = styled.div`
 `
 const LogoffWrapper = styled.div`
     display: grid;
-    
-
-
 	justify-self: center;
-
 `
 
 
@@ -61,7 +52,6 @@ const Button = styled.div`
 	border-radius: 25px;
 	background-color: #5fe616c7;
 	padding: 10px 10px;
-
 	border: 3px solid whitesmoke;
 	font-weight: 500;
 	font-size: 30px;
@@ -72,11 +62,8 @@ const Button = styled.div`
     color: #020202;
     align-self: center;
 	text-align: center;
-
 	width: 80%;
 	justify-self: center;
 	justify-content: center;
-
 	margin-top: 5px;
-	
 `

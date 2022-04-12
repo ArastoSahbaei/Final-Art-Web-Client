@@ -26,12 +26,10 @@ export const DisplayHome = () => {
 
 const Wrapper = styled.div`
 	margin: 0 auto;
-
 	width: 100%;
 	text-align: center;
-
 	align-content: center;
-	`
+`
 
 const WrapperBackground = styled.div`
 	position: absolute;
@@ -41,15 +39,13 @@ const WrapperBackground = styled.div`
 	width: 100%;
 	height: 100%;
 	z-index: -1;
-	`
+`
 
 const HomeGrid = styled.div`
 	display: grid;
-
-
 	align-self: center;
 	width: 80%;
-    `
+`
 
 const HomeCell = styled.div`
 		border-radius: 5px;
@@ -58,17 +54,16 @@ const HomeCell = styled.div`
 		margin: 10px 0px;
 		border: 3px solid whitesmoke;
 		width: 750px;
-		
 		display: grid;
 		align-items: center;
 		max-height: 100%;
 		position: relative;
 		height: 100%;
-	`
+`
 const ParagraphWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
-	`
+`
 
 const Button = styled.div`
 	border-radius: 25px;
@@ -76,7 +71,6 @@ const Button = styled.div`
 	padding: 10px 60px;
 	margin: 10px 0px;
 	border: 3px solid whitesmoke;
-
 	font-weight: 600;
 	font-size: 40px;
 	width: 100%;
@@ -85,17 +79,17 @@ const Button = styled.div`
     text-decoration: none;
     color: #020202;
     align-self: center;
-   
-	`
+`
+
 const H1 = styled.div`
 	font-family: 600;
 	font-weight: 400;
 	font-size: 30px;
 	align-self: center;
 	margin-top: 5px;
-	`
+`
 
 const PokeImage = styled.img`
 	background-color: #4872d0;
 	text-align: center;
-	`
+`
