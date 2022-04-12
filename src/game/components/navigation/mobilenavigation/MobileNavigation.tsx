@@ -10,6 +10,8 @@ export const MobileNavigation = () => {
 			<button onClick={() => navigate(RoutingPath.homeView)} >{'Home'}</button>
 			<button onClick={() => navigate(RoutingPath.marketPlaceView)} >{'Marketplace'}</button>
 			<button onClick={() => navigate(RoutingPath.playNowView)}>{'Play Now!'}</button> 
+			<button onClick={() => navigate(RoutingPath.signInView)}>{'Sign In!'} </button>
+			<button onClick={() => navigate(RoutingPath.logoffView)}>{'Log Off'} </button>
 		</div>
 	)
 }
